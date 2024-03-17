@@ -1,4 +1,5 @@
 'use client'
+// import Payment from './_components/Payment';
 import Sidebar from './_components/Sidebar';
 import ProductApis from './_utils/ProductApis'
 
@@ -23,6 +24,7 @@ export default function Home() {
   return (
     <>
       <Sidebar />
+      {/* <Payment /> */}
 
     </>
 
