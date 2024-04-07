@@ -6,9 +6,9 @@ const apiUrl = 'https://telegycare-s.onrender.com/api'
 
 const axiosClient = axios.create({
     baseURL: apiUrl,
-    headers: {
-        Authorization: `Bearer ${apikey}`
-    }
+    // headers: {
+    //     Authorization: `Bearer ${apikey}`
+    // }
 });
 
 
