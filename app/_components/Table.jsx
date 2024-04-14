@@ -39,11 +39,18 @@ function Table({ data }) {
       <tbody>
         {filteredData.map((item, index) => (
           <tr key={index}>
+            {/* <td className="border px-4 py-2">{item?.attributes?.reg_Num}</td>
+            <td className="border px-4 py-2">{item?.attributes?.Name}</td>
+            <td className="border px-4 py-2">{item?.attributes?.phone}</td>
+            <td className="border px-4 py-2">{item?.attributes?.Email}</td>
+            <td className="border px-4 py-2">{item?.attributes?.Address}</td> */}
+
+
+
             <td className="border px-4 py-2">{item.Registrationnumber}</td>
             <td className="border px-4 py-2">{item.Name}</td>
             <td className="border px-4 py-2">{item.Phone}</td>
             <td className="border px-4 py-2">{item.Email}</td>
-            
             <td className="border px-4 py-2">{item.Address}</td>
           </tr>
         ))}
