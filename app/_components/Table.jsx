@@ -29,23 +29,22 @@ function Table({ data }) {
     <table className="w-full table-auto">
       <thead>
         <tr>
+          <th className="px-4 py-2">Registration number</th>
           <th className="px-4 py-2">Name</th>
-          <th className="px-4 py-2">Position</th>
-          <th className="px-4 py-2">Office</th>
-          <th className="px-4 py-2">Age</th>
-          <th className="px-4 py-2">Start date</th>
-          <th className="px-4 py-2">Salary</th>
+          <th className="px-4 py-2">Phone</th>
+          <th className="px-4 py-2">Email</th>
+          <th className="px-4 py-2">Address</th>
         </tr>
       </thead>
       <tbody>
         {filteredData.map((item, index) => (
           <tr key={index}>
+            <td className="border px-4 py-2">{item.Registrationnumber}</td>
             <td className="border px-4 py-2">{item.Name}</td>
-            <td className="border px-4 py-2">{item.Position}</td>
-            <td className="border px-4 py-2">{item.Office}</td>
-            <td className="border px-4 py-2">{item.Age}</td>
-            <td className="border px-4 py-2">{item.Start_date}</td>
-            <td className="border px-4 py-2">{item.Salary}</td>
+            <td className="border px-4 py-2">{item.Phone}</td>
+            <td className="border px-4 py-2">{item.Email}</td>
+            
+            <td className="border px-4 py-2">{item.Address}</td>
           </tr>
         ))}
       </tbody>
