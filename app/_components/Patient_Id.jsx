@@ -1,9 +1,25 @@
 'use client'
 import { useEffect, useState } from 'react';
 import Table from './Table';
+import PatientAPI from '../_Utils/PatientAPI'
 
 function Patient_Id() {
-    const [data, setData] = useState([]);
+  const [patients, setPatients] = useState([]);
+  useEffect(() => {
+    getPatient_();
+  }, [])
+
+  const getPatient_ = () => {
+    PatientAPI.getPatient().then(res => {
+      console.log(res.data.data);
+      setPatients(res.data.data);
+      // setLoading(true)
+
+    })
+  }
+
+    const [data, setData] = useState([]); 
+    
     useEffect(() => {
         const fetchedData = [
           {
@@ -41,6 +57,7 @@ function Patient_Id() {
     
   return (
     <div>
+        {/* <Table data={patients} /> */}
         <Table data={data} />
     </div>
   )
