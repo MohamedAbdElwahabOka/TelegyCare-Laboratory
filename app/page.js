@@ -3,7 +3,6 @@
 // import Payment from './_components/Payment';
 import Sidebar from './_components/Sidebar';
 import ProductApis from './_Utils/ProductApis'
-
 import React, { useEffect, useState } from 'react'
 import SendResult from './SendResult/page';
 
