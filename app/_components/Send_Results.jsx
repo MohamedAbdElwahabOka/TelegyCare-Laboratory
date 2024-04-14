@@ -11,7 +11,7 @@ function SendResults() {
           </div>
           <hr className="my-1 mt-40" />
           <div className="flex items-center justify-between">
-            <button className="rounded-full bg-blue-500 text-white p-2" variant="ghost">
+            <button className="rounded-full bg-blue-500 text-white p-2" variant="ghost" htmlFor="file-input">
               <UploadIcon className="text-white" />
             </button>
             <div className="flex-grow mx-2">

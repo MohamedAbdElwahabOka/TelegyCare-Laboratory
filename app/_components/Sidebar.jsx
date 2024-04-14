@@ -51,6 +51,17 @@ function Sidebar() {
         },
         {
           id: 5,
+          icon:<svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M29.7 19.3L26.7 16.3C26.3 15.9 25.7 15.9 25.3 16.3L16 25.6V30H20.4L29.7 20.7C30.1 20.3 30.1 19.7 29.7 19.3ZM19.6 28H18V26.4L23 21.4L24.6 23L19.6 28ZM26 21.6L24.4 20L26 18.4L27.6 20L26 21.6ZM10 23H12V25H10V23ZM14 18H18V20H14V18ZM10 18H12V20H10V18ZM14 13H22V15H14V13ZM10 13H12V15H10V13Z" fill="white"/>
+          <path d="M7 28V7H10V10H22V7H25V13H27V7C27 5.9 26.1 5 25 5H22V4C22 2.9 21.1 2 20 2H12C10.9 2 10 2.9 10 4V5H7C5.9 5 5 5.9 5 7V28C5 29.1 5.9 30 7 30H12V28H7ZM12 4H20V8H12V4Z" fill="white"/>
+          </svg>
+          ,
+          link: "AiResult",
+          text: "AI Result",
+          isActive: false,
+        },
+        {
+          id: 6,
           icon: <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path d="M6.5 5C5.30653 5 4.16193 5.47411 3.31802 6.31802C2.47411 7.16193 2 8.30653 2 9.5V11H30V9.5C30 8.30653 29.5259 7.16193 28.682 6.31802C27.8381 5.47411 26.6935 5 25.5 5H6.5ZM2 22.5V13H30V22.5C30 23.6935 29.5259 24.8381 28.682 25.682C27.8381 26.5259 26.6935 27 25.5 27H6.5C5.30653 27 4.16193 26.5259 3.31802 25.682C2.47411 24.8381 2 23.6935 2 22.5ZM21 19C20.7348 19 20.4804 19.1054 20.2929 19.2929C20.1054 19.4804 20 19.7348 20 20C20 20.2652 20.1054 20.5196 20.2929 20.7071C20.4804 20.8946 20.7348 21 21 21H24C24.2652 21 24.5196 20.8946 24.7071 20.7071C24.8946 20.5196 25 20.2652 25 20C25 19.7348 24.8946 19.4804 24.7071 19.2929C24.5196 19.1054 24.2652 19 24 19H21Z" fill="white"/>
           </svg>
@@ -59,6 +70,7 @@ function Sidebar() {
           text: "Payment",
           isActive: false,
         },
+        
       ]
   const [sidebarToggled, setSidebarToggled] = useState(false)
   const [sidebarResized, setSidebarResized] = useState(false)
