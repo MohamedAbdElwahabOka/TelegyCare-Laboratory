@@ -1,6 +1,6 @@
 'use client'
 import { useEffect, useState } from 'react';
-
+import Link from 'next/link';
 function Table({ data }) {
     const [filteredData, setFilteredData] = useState(data);
     const [searchTerm, setSearchTerm] = useState('');
@@ -38,21 +38,30 @@ function Table({ data }) {
       </thead>
       <tbody>
         {filteredData.map((item, index) => (
+          // <Link href="/" >
           <tr key={index}>
-            {/* <td className="border px-4 py-2">{item?.attributes?.reg_Num}</td>
-            <td className="border px-4 py-2">{item?.attributes?.Name}</td>
-            <td className="border px-4 py-2">{item?.attributes?.phone}</td>
-            <td className="border px-4 py-2">{item?.attributes?.Email}</td>
-            <td className="border px-4 py-2">{item?.attributes?.Address}</td> */}
-
-
-
-            <td className="border px-4 py-2">{item.Registrationnumber}</td>
-            <td className="border px-4 py-2">{item.Name}</td>
-            <td className="border px-4 py-2">{item.Phone}</td>
-            <td className="border px-4 py-2">{item.Email}</td>
-            <td className="border px-4 py-2">{item.Address}</td>
+            <td className="border px-4 py-2"><Link href={`/patient-details/${item.id}`}>{item?.attributes?.reg_Num}</Link></td>
+            <td className="border px-4 py-2"><Link href={`/patient-details/${item.id}`}>{item?.attributes?.Name}</Link></td>
+            <td className="border px-4 py-2"><Link href={`/patient-details/${item.id}`}>{item?.attributes?.phone}</Link></td>
+            <td className="border px-4 py-2"><Link href={`/patient-details/${item.id}`}>{item?.attributes?.Email}</Link></td>
+            <td className="border px-4 py-2"><Link href={`/patient-details/${item.id}`}>{item?.attributes?.Address}</Link></td>
           </tr>
+        // </Link>
+          // <tr key={index}>
+          //   <td className="border px-4 py-2">{item?.attributes?.reg_Num}</td>
+          //   <td className="border px-4 py-2">{item?.attributes?.Name}</td>
+          //   <td className="border px-4 py-2">{item?.attributes?.phone}</td>
+          //   <td className="border px-4 py-2">{item?.attributes?.Email}</td>
+          //   <td className="border px-4 py-2">{item?.attributes?.Address}</td>
+
+
+
+          //   {/* <td className="border px-4 py-2">{item.Registrationnumber}</td>
+          //   <td className="border px-4 py-2">{item.Name}</td>
+          //   <td className="border px-4 py-2">{item.Phone}</td>
+          //   <td className="border px-4 py-2">{item.Email}</td>
+          //   <td className="border px-4 py-2">{item.Address}</td> */}
+          // </tr>
         ))}
       </tbody>
     </table>
