@@ -57,8 +57,8 @@ function Patient_Id() {
     
   return (
     <div>
-        {/* <Table data={patients} /> */}
-        <Table data={data} />
+        <Table data={patients} />
+        {/* <Table data={data} /> */}
     </div>
   )
 }
