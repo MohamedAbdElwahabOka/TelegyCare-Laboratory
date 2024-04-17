@@ -1,10 +1,11 @@
 'use client'
 
 // import Payment from './_components/Payment';
-import Sidebar from './_components/Sidebar';
+
+import Login from "./_components/Login";
 import ProductApis from './_Utils/ProductApis'
 import React, { useEffect, useState } from 'react'
-import SendResult from './SendResult/page';
+
 
 export default function Home() {
   const [tests, setTests] = useState([]);
@@ -24,15 +25,7 @@ export default function Home() {
 
   return (
     <>
-      {/* <SendResults/>
-      <Sidebar /> */}
-      {/* <Payment /> */}
-      <div className="flex h-screen">
-        <Sidebar className="w-64 bg-gray-800 text-white px-4 py-8" />
-        <div className="flex-grow bg-gray-100 p-8">
-        </div>
-      </div>
-      <SendResult />
+      <Login/>
     </>
 
   );
