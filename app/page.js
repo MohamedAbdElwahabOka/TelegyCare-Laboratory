@@ -1,10 +1,11 @@
 'use client'
 
 // import Payment from './_components/Payment';
-import Sidebar from './_components/Sidebar';
+
+import Login from "./_components/Login";
 import ProductApis from './_Utils/ProductApis'
 import React, { useEffect, useState } from 'react'
-import SendResult from './SendResult/page';
+
 
 export default function Home() {
   const [tests, setTests] = useState([]);
