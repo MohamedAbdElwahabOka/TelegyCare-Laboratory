@@ -1,7 +1,7 @@
 "use client"
 
 import React, { useState } from 'react';
-
+import Link from 'next/link';
 import Image from 'next/image';
 
 const Login = () => {
@@ -61,12 +61,14 @@ const Login = () => {
           </div>
 
           <div>
-            <button
-              type="submit"
-              className="w-full flex justify-center py-3 px-5 border border-transparent rounded-md shadow-sm text-xl font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-            >
-              Sign in
-            </button>
+<Link href="PatientID"
+  
+    type="submit"
+    className="w-full flex justify-center py-3 px-5 border border-transparent rounded-md shadow-sm text-xl font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+  >
+    Sign in
+
+</Link>
           </div>
         </form>
       </div>
