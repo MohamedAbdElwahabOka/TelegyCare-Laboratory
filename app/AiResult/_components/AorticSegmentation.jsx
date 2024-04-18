@@ -2,6 +2,7 @@ import React from 'react';
 import Image from 'next/image'
 import Aortic from '../img/Aortic.jpg'
 import Segmentation from '../img/Segmentation.jpg'
+import Link from 'next/link';
 export default function AorticSegmentation() {
   return (
     <div>
@@ -9,15 +10,15 @@ export default function AorticSegmentation() {
         <div className="text-3xl font-bold mb-4">Al Result</div>
         <div className="text-2xl font-semibold mb-4">Aortic Segmentation</div>
         <div className="flex space-x-4 mb-4">
-          <button className="bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600">
-            Save PDF
-          </button>
+          <Link href='WriteAReport' className="bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600">
+          Write a report
+          </Link>
           {/* <button className="bg-gray-500 text-white py-2 px-4 rounded-md hover:bg-gray-600">
             Al Result
           </button> */}
-          <button className="bg-gray-500 text-white py-2 px-4 rounded-md hover:bg-gray-600">
+          {/* <button className="bg-gray-500 text-white py-2 px-4 rounded-md hover:bg-gray-600">
             Aortic Segmentation
-          </button>
+          </button> */}
         </div>
         {/* <div className="bg-white p-4 rounded-md shadow-md">
           <div className="text-xl font-semibold mb-2">Ultrasound Image of the Heart</div>

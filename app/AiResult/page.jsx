@@ -4,6 +4,7 @@ import AorticSegmentation from './_components/AorticSegmentation'
 import MakePDF from './_components/MakePDF'
 import Make from './_components/Make'
 import Makedpfwithjsreport from './_components/Makedpfwithjsreport'
+import PrintPDF from './_components/PrintPDF'
 function Ai_result() {
   return (
     <div>
@@ -12,8 +13,9 @@ function Ai_result() {
       <div className="flex-grow bg-gray-100 p-8">
         <AorticSegmentation/>
         {/* <MakePDF/> */}
-         <Make/>
+         {/* <Make/> */}
        {/* <Makedpfwithjsreport/>*/}
+       {/* <PrintPDF/> */}
 
       </div>
     </div>
