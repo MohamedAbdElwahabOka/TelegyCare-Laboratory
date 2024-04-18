@@ -36,7 +36,7 @@ function Form() {
       </div>
       <Link
         href={{
-          pathname: '/WriteAReport/Result',
+          pathname: '/Result',
           query: {
             name: name,
             age: age

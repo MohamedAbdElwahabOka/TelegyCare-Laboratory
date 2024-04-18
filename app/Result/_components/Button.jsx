@@ -3,7 +3,7 @@ import React ,{useRef} from 'react'
 import { useReactToPrint } from 'react-to-print';
 import { useSearchParams } from 'next/navigation'
 import Image from 'next/image';
-import Segmentation from '../../../AiResult/img/Segmentation.jpg'
+import Segmentation from '../../AiResult/img//Segmentation.jpg'
 
 export default function Button() {
     const componentRef = useRef();
