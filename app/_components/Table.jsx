@@ -19,14 +19,18 @@ function Table({ data }) {
       }, [searchTerm, data]);
   return (
     <div className="p-4">
-    <input
+  <div className="flex justify-between mb-4">
+  <h1 className="text-2xl font-bold">Patient List</h1>
+  <input
       type="text"
       placeholder="Search..."
       value={searchTerm}
       onChange={(e) => setSearchTerm(e.target.value)}
-      className="w-full px-3 py-2 placeholder-gray-500 border rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:w-64 sm:ml-4 sm:text-sm mb-4"
+      className="w-64 px-3 py-2 placeholder-gray-500 border rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:w-auto"
     />
-    <table className="w-full table-auto">
+</div>
+      <table className="w-full border border-gray-300">
+    
       <thead>
         <tr>
           <th className="px-4 py-2">Registration number</th>
@@ -46,22 +50,7 @@ function Table({ data }) {
             <td className="border px-4 py-2"><Link href={`/patient-details/${item.id}`}>{item?.attributes?.Email}</Link></td>
             <td className="border px-4 py-2"><Link href={`/patient-details/${item.id}`}>{item?.attributes?.Address}</Link></td>
           </tr>
-        // </Link>
-          // <tr key={index}>
-          //   <td className="border px-4 py-2">{item?.attributes?.reg_Num}</td>
-          //   <td className="border px-4 py-2">{item?.attributes?.Name}</td>
-          //   <td className="border px-4 py-2">{item?.attributes?.phone}</td>
-          //   <td className="border px-4 py-2">{item?.attributes?.Email}</td>
-          //   <td className="border px-4 py-2">{item?.attributes?.Address}</td>
-
-
-
-          //   {/* <td className="border px-4 py-2">{item.Registrationnumber}</td>
-          //   <td className="border px-4 py-2">{item.Name}</td>
-          //   <td className="border px-4 py-2">{item.Phone}</td>
-          //   <td className="border px-4 py-2">{item.Email}</td>
-          //   <td className="border px-4 py-2">{item.Address}</td> */}
-          // </tr>
+     
         ))}
       </tbody>
     </table>
