@@ -10,7 +10,7 @@ export default function AorticSegmentation() {
         <div className="text-3xl font-bold mb-4">Al Result</div>
         <div className="text-2xl font-semibold mb-4">Aortic Segmentation</div>
         <div className="flex space-x-4 mb-4">
-          <Link href='WriteAReport' className="bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600">
+          <Link href='WriteReport' className="bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600">
           Write a report
           </Link>
           {/* <button className="bg-gray-500 text-white py-2 px-4 rounded-md hover:bg-gray-600">

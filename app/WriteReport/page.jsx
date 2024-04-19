@@ -1,7 +1,7 @@
 import React from 'react'
 import Sidebar from '../_components/Sidebar'
-import AorticSegmentation from './_components/AorticSegmentation'
 
+import Make from './_components/Make'
 
 function Ai_result() {
   return (
@@ -9,11 +9,10 @@ function Ai_result() {
      <div className="flex h-screen">  
       <Sidebar className="w-64 bg-gray-800 text-white px-4 py-8" />
       <div className="flex-grow bg-gray-100 p-8">
-        <AorticSegmentation/>
-        {/* <MakePDF/> */}
-         {/* <Make/> */}
-       {/* <Makedpfwithjsreport/>*/}
-       {/* <PrintPDF/> */}
+   
+   
+         <Make/>
+
 
       </div>
     </div>
