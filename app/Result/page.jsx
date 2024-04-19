@@ -4,6 +4,7 @@ import { useReactToPrint } from 'react-to-print';
 import { useSearchParams } from 'next/navigation'
 import Image from 'next/image';
 import Segmentation from '../AiResult/img/Segmentation.jpg'
+import { Suspense } from "react";
 
 export default function Result(){
     const componentRef = useRef();
@@ -20,7 +21,7 @@ export default function Result(){
     console.log(SearchParams.get('name'));
     console.log(SearchParams.get('age'));
   return (
-    <>
+    <Suspense>
      <div ref={componentRef} style={{width: '100%' ,height:window.innerHeight}}>
         <h1>{name}</h1>
         <h1>{age}</h1>
@@ -33,7 +34,7 @@ export default function Result(){
     />
      </div>
         <button onClick={handlePrint}>Print this out!</button>
-    </>
+    </Suspense>
   )
   
 }
