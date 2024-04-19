@@ -12,41 +12,50 @@ const Make = () => {
   const generatePDF = async (data) => {
     setIsGenerating(true);
 
-    const doc = new jsPDF();
-    doc.text('Hello, ' + data.name, 10, 10); // Customize content and styles
-    doc.text('Email: ' + data.email, 10, 20);
-    doc.text('Date: ' + data.date, 10, 30);
-    doc.text('Age: ' + data.age, 10, 40);
+    try {
+      const doc = new jsPDF();
+      doc.setFontSize(20);
+      doc.text('Personal Information', 10, 15);
+      doc.setFontSize(14);
+      doc.text('Name: ' + data.name, 10, 30);
+      doc.text('Email: ' + data.email, 10, 45);
+      doc.text('Date of Birth: ' + data.date, 10, 60);
+      doc.text('Age: ' + data.age, 10, 75);
+      doc.addPage(); // Add a new page for images
+      if (data.image1[0]) {
+        const reader1 = new FileReader();
+        reader1.onload = function(event) {
+          const imageData1 = event.target.result;
+          doc.addImage(imageData1, 'PNG', 10, 10, 100, 100); // Customize image position and dimensions
+          if (data.image2[0]) {
+            const reader2 = new FileReader();
+            reader2.onload = function(event) {
+              const imageData2 = event.target.result;
+              doc.addImage(imageData2, 'PNG', 120, 10, 100, 100); // Customize image position and dimensions
+              doc.save('my-pdf.pdf'); // Save the PDF with both images
+            };
+            reader2.readAsDataURL(data.image2[0]);
+          } else {
+            doc.save('my-pdf.pdf'); // Save the PDF with only the first image
+          }
+        };
+        reader1.readAsDataURL(data.image1[0]);
+      } else {
+        doc.save('my-pdf.pdf'); // Save the PDF without any image
+      }
 
-    if (data.image1[0]) {
-      const reader1 = new FileReader();
-      reader1.onload = function(event) {
-        const imageData1 = event.target.result;
-        doc.addImage(imageData1, 'PNG', 10, 50, 50, 50); // Customize image position and dimensions
-        if (data.image2[0]) {
-          const reader2 = new FileReader();
-          reader2.onload = function(event) {
-            const imageData2 = event.target.result;
-            doc.addImage(imageData2, 'PNG', 70, 50, 50, 50); // Customize image position and dimensions
-            doc.save('my-pdf.pdf'); // Save the PDF with both images
-          };
-          reader2.readAsDataURL(data.image2[0]);
-        } else {
-          doc.save('my-pdf.pdf'); // Save the PDF with only the first image
-        }
-      };
-      reader1.readAsDataURL(data.image1[0]);
-    } else {
-      doc.save('my-pdf.pdf'); // Save the PDF without any image
+      setName(data.name); // Update state for display
+      setIsGenerating(false);
+    } catch (error) {
+      console.error('Error generating PDF:', error);
+      setIsGenerating(false);
+      // Optionally, you can display an error message to the user
     }
-
-    setName(data.name); // Update state for display
-    setIsGenerating(false);
   };
 
   return (
     <div>
-      <h1>Generate PDF with Name, Email, Date, Age, and Images</h1>
+      <h1>Generate Custom PDF</h1>
       <form onSubmit={handleSubmit(generatePDF)}>
         <label htmlFor="name">Name:</label>
         <input type="text" {...register('name', { required: true })} />
@@ -56,7 +65,7 @@ const Make = () => {
         <input type="email" {...register('email', { required: true })} />
         {errors.email && <span className="error">Email is required</span>}
         <br />
-        <label htmlFor="date">Date:</label>
+        <label htmlFor="date">Date of Birth:</label>
         <input type="date" {...register('date', { required: true })} />
         {errors.date && <span className="error">Date is required</span>}
         <br />
@@ -76,12 +85,17 @@ const Make = () => {
           {isGenerating ? 'Generating PDF...' : 'Generate PDF'}
         </button>
       </form>
-      {/* {name && <p>Your name: {name}</p>} */}
+      {name && <p>Your name: {name}</p>}
     </div>
   );
 };
 
 export default Make;
+
+
+
+
+
 
 
 // 'use client'
