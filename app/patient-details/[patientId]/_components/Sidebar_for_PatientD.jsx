@@ -2,7 +2,7 @@
 import Link from 'next/link'
 import React, { useEffect, useState } from 'react'
 
-function Sidebar_For_PatientD({patient}) {
+function Sidebar_For_PatientD() {
     //  Patient=patient?.attributes?.reg_Num
     const navItems = [
         {
@@ -13,7 +13,7 @@ function Sidebar_For_PatientD({patient}) {
           </svg>
           ,
           link: "Patient ID",
-          text: `${patient?.attributes?.reg_Num}`,
+          text: "Patient ID",
           isActive: true,
         },
     
