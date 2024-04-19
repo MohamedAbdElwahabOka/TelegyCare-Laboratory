@@ -2,8 +2,7 @@
 import Link from 'next/link'
 import React, { useEffect, useState } from 'react'
 
-function Sidebar_For_PatientD({patient}) {
-    //  Patient=patient?.attributes?.reg_Num
+function Sidebar({data}) {
     const navItems = [
         {
           id: 1,
@@ -12,13 +11,11 @@ function Sidebar_For_PatientD({patient}) {
           <path d="M10.0001 13C5.92199 13 1.78293 15.25 1.01699 19.4969C0.924645 20.0088 1.21433 20.5 1.75011 20.5H18.2501C18.7864 20.5 19.0761 20.0088 18.9837 19.4969C18.2173 15.25 14.0782 13 10.0001 13Z" stroke="#0070CD" stroke-width="2" stroke-miterlimit="10"/>
           </svg>
           ,
-
+          link: "PatientID",
+          text: "Patient ID",
           isActive: true,
         },
-    
-
-        // {patient?.attributes?.reg_Num}
-  
+        
         {
           id: 6,
           icon: <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -48,7 +45,7 @@ function Sidebar_For_PatientD({patient}) {
         ${sidebarResized ? "lg:w-20" : ""}
     `}>
         <div className="min-h-max py-4 border-b border-b-gray-200 dark:border-b-gray-800">
-         
+          
           <span className={`ml-20 text-slate-100 
                     ${sidebarResized ? "lg:invisible" : ""}
                 `}>TelEgyCare</span>
@@ -121,4 +118,4 @@ function Sidebar_For_PatientD({patient}) {
   )
 }
 
-export default Sidebar_For_PatientD
+export default Sidebar

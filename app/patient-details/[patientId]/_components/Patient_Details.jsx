@@ -1,5 +1,5 @@
-import React from 'react'
-
+import React from 'react';
+import Link from 'next/link';
 function Patient_Details({patient},{doctor}) {
   return (
     <div className="bg-white p-4 shadow-md rounded-md">
@@ -39,9 +39,11 @@ function Patient_Details({patient},{doctor}) {
       
     </fieldset>
     <div className="flex justify-end">
- <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+ <Link href="\Orders"
+
+  className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
       Test orders
-    </button>
+    </Link>
 </div>
   </div>
   )
