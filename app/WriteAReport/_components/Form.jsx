@@ -3,8 +3,8 @@ import { useState } from "react";
 import Link from "next/link";
 
 function Form() {
-  const [name, setName] = useState("");
-  const [age, setAge] = useState("");
+  const [name, setName] = useState("M");
+  const [age, setAge] = useState("0");
 
   const handleNameChange = (event) => {
     setName(event.target.value);
