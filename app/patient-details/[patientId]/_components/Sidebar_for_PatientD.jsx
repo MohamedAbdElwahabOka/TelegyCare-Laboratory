@@ -2,7 +2,7 @@
 import Link from 'next/link'
 import React, { useEffect, useState } from 'react'
 
-function Sidebar_For_PatientD({patient}) {
+function Sidebar_For_PatientD() {
     //  Patient=patient?.attributes?.reg_Num
     const navItems = [
         {
@@ -12,7 +12,12 @@ function Sidebar_For_PatientD({patient}) {
           <path d="M10.0001 13C5.92199 13 1.78293 15.25 1.01699 19.4969C0.924645 20.0088 1.21433 20.5 1.75011 20.5H18.2501C18.7864 20.5 19.0761 20.0088 18.9837 19.4969C18.2173 15.25 14.0782 13 10.0001 13Z" stroke="#0070CD" stroke-width="2" stroke-miterlimit="10"/>
           </svg>
           ,
+//  <<<<<<< HEAD
+          link: "Patient ID",
+          text: "Patient ID",
+//  =======
 
+//  >>>>>>> dc647066ccb18d067cc1cfad4ef9a6eebd1debd8
           isActive: true,
         },
     
