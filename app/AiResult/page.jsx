@@ -13,7 +13,7 @@ function Ai_result() {
       <div className="flex-grow bg-gray-100 p-8">
         <AorticSegmentation/>
         {/* <MakePDF/> */}
-         {/* <Make/> */}
+         <Make/>
        {/* <Makedpfwithjsreport/>*/}
        {/* <PrintPDF/> */}
 
