@@ -35,16 +35,18 @@ function Form() {
         />
       </div>
       <Link
-        href={{
-          pathname: '/Result',
-          query: {
-            name: name,
-            age: age
-          }
-        }}
-      >
-      Send data to result page
-      </Link>
+  href={{
+    pathname: 'Result',
+    query: {
+      name: name,
+      age: age
+    }
+  }}
+>
+  <button type="button">
+    Send data to result page
+  </button>
+</Link>
     </>
   );
 }
