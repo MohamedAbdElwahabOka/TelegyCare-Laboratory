@@ -5,7 +5,6 @@ import Link from 'next/link';
 function Table({ data }) {
     const [filteredData, setFilteredData] = useState(data);
     const [searchTerm, setSearchTerm] = useState('');
-
     useEffect(() => {
         if (searchTerm) {
           const filtered = data.filter((item) =>
@@ -45,32 +44,43 @@ function Table({ data }) {
           </thead>
           <tbody>
             {filteredData.map((item, index) => (
+            
               <tr key={index} className={index % 2 === 0 ? 'bg-white' : 'bg-transparent'}>
+                {item?.attributes?.pres_state == 1 ? <>
+
                 <td className=" px-4 py-2">
-                  <Link href={`/patient-details/${item.id}`}>
-                    {item?.attributes?.reg_Num}
+                  <Link href={`/patient-details/${item?.attributes?.patient?.data?.id}`}>
+                    #{item?.attributes?.patient?.data?.attributes?.reg_Num}
+                    {/* {console.log(item)}
+                    {console.log(item?.attributes?.patient?.data?.attributes?.Name)}
+                    {console.log(item.id)} */}
+                    {/* { console.log(item?.attributes?.pres_state)} */}
                   </Link>
                 </td>
                 <td className=" px-4 py-2">
-                  <Link href={`/patient-details/${item.id}`}>
-                    {item?.attributes?.Name}
+                  <Link href={`/patient-details/${item?.attributes?.patient?.data?.id}`}>
+                    
+               {item?.attributes?.patient?.data?.attributes?.Name}
                   </Link>
                 </td>
                 <td className=" px-4 py-2">
-                  <Link href={`/patient-details/${item.id}`}>
-                    {item?.attributes?.phone}
+                  <Link href={`/patient-details/${item?.attributes?.patient?.data?.id}`}>
+                {item?.attributes?.patient?.data?.attributes?.phone}
                   </Link>
                 </td>
                 <td className=" px-4 py-2">
-                  <Link href={`/patient-details/${item.id}`}>
-                    {item?.attributes?.Email}
+                  <Link href={`/patient-details/${item?.attributes?.patient?.data?.id}`}>
+                    {item?.attributes?.patient?.data?.attributes?.Email}
                   </Link>
                 </td>
                 <td className=" px-4 py-2">
-                  <Link href={`/patient-details/${item.id}`}>
-                    {item?.attributes?.Address}
+                  <Link href={`/patient-details/${item?.attributes?.patient?.data?.id}`}>
+                     {item?.attributes?.patient?.data?.attributes?.Address}
+                    
                   </Link>
                 </td>
+                </> : <></>}
+                
               </tr>
             ))}
           </tbody>
