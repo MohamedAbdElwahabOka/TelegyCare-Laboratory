@@ -10,14 +10,9 @@ function Sidebar_For_PatientD() {
           icon: <svg width="20" height="22" viewBox="0 0 20 22" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path d="M14.1246 5.5C13.9408 7.97828 12.0621 10 9.99955 10C7.93705 10 6.05502 7.97875 5.87455 5.5C5.68705 2.92188 7.51517 1 9.99955 1C12.4839 1 14.3121 2.96875 14.1246 5.5Z" stroke="#0070CD" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
           <path d="M10.0001 13C5.92199 13 1.78293 15.25 1.01699 19.4969C0.924645 20.0088 1.21433 20.5 1.75011 20.5H18.2501C18.7864 20.5 19.0761 20.0088 18.9837 19.4969C18.2173 15.25 14.0782 13 10.0001 13Z" stroke="#0070CD" stroke-width="2" stroke-miterlimit="10"/>
-          </svg>
-          ,
-//  <<<<<<< HEAD
-          link: "Patient ID",
+          </svg>,
+          link: "#",
           text: "Patient ID",
-//  =======
-
-//  >>>>>>> dc647066ccb18d067cc1cfad4ef9a6eebd1debd8
           isActive: true,
         },
     
@@ -81,9 +76,6 @@ function Sidebar_For_PatientD() {
             }
           </ul>
         </nav>
-
-
-
 
 
         <div className="min-h-max py-2 hidden lg:flex justify-end bg-transparent">
