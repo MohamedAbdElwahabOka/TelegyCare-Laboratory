@@ -1,7 +1,7 @@
 'use client'
 import React, { useEffect, useState} from "react";
 import PatientAPI from '../../_Utils/PatientAPI'
-import Testform from './_components/Patient_Details'
+import Patient_Details from './_components/Patient_Details'
 import Sidebar_for_PatientD from './_components/Sidebar_for_PatientD'
 function patient_details({params}) {
   const [patientDetails, setPatientDetails] = useState({});
@@ -30,7 +30,7 @@ function patient_details({params}) {
       <Sidebar_for_PatientD className="w-64 bg-gray-800 text-white px-4 py-8" />
       <div className="flex-grow bg-gray-100 p-8">
     
-      <Testform patient={patientDetails}/>
+      <Patient_Details patient={patientDetails}/>
       </div>
     </div>
       

@@ -3,7 +3,7 @@ import Link from 'next/link';
 function Patient_Details({patient},{doctor}) {
   return (
     <div className="bg-white p-4 shadow-md rounded-md">
-    <div className="text-xl font-semibold mb-4">{patient?.attributes?.reg_Num}</div>
+    <div className="text-xl font-semibold mb-4">#{patient?.attributes?.reg_Num}</div>
     <fieldset className="border border-gray-300 p-4 rounded-md">
       <legend className="text-lg font-semibold mb-2">Patient Details</legend>
       <div className="flex items-center mb-4">
