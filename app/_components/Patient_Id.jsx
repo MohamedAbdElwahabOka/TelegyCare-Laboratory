@@ -2,7 +2,7 @@
 import { useEffect, useState } from 'react';
 import Table from './Table';
 
-import medicalrecordAPI from '../_Utils/MedicalRecordAPI'
+import medicalrecordAPI from '../_Utils/medicalrecordAPI'
 
 function Patient_Id() {
 
