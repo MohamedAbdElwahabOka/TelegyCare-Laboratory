@@ -3,21 +3,21 @@ import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
 
 function Table({ data }) {
-    const [filteredData, setFilteredData] = useState(data);
-    const [searchTerm, setSearchTerm] = useState('');
-    useEffect(() => {
-        if (searchTerm) {
-          const filtered = data.filter((item) =>
-            Object.values(item)
-              .join('')
-              .toLowerCase()
-              .includes(searchTerm.toLowerCase())
-          );
-          setFilteredData(filtered);
-        } else {
-          setFilteredData(data);
-        }
-      }, [searchTerm, data]);
+    // const [filteredData, setFilteredData] = useState(data);
+    // const [searchTerm, setSearchTerm] = useState('');
+    // useEffect(() => {
+    //     if (searchTerm) {
+    //       const filtered = data.filter((item) =>
+    //         Object.values(item)
+    //           .join('')
+    //           .toLowerCase()
+    //           .includes(searchTerm.toLowerCase())
+    //       );
+    //       setFilteredData(filtered);
+    //     } else {
+    //       setFilteredData(data);
+    //     }
+    //   }, [searchTerm, data]);
 
   return (
     <div className="p-4 bg-gray-100">
@@ -26,8 +26,8 @@ function Table({ data }) {
         <input
           type="text"
           placeholder="Search..."
-          value={searchTerm}
-          onChange={(e) => setSearchTerm(e.target.value)}
+          // value={searchTerm}
+          // onChange={(e) => setSearchTerm(e.target.value)}
           className="w-64 px-3 py-2 placeholder-gray-500 border rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:w-auto"
         />
       </div>
@@ -43,7 +43,7 @@ function Table({ data }) {
             </tr>
           </thead>
           <tbody>
-            {filteredData.map((item, index) => (
+            {data.map((item, index) => (
             
               <tr key={index} className={index % 2 === 0 ? 'bg-white' : 'bg-transparent'}>
                 {item?.attributes?.pres_state == 1 ? <>
