@@ -1,22 +1,20 @@
 'use client'
-
-// import Payment from './_components/Payment';
-
-import Login from "./_components/Login";
-import ProductApis from './_Utils/ProductApis'
 import React, { useEffect, useState } from 'react'
-
+import Login from "./_components/Login";
+import LaboratoriesAPI from './_Utils/LaboratoriesAPI'
 
 export default function Home() {
-  const [tests, setTests] = useState([]);
+
+
+  const [laboratories, setLaboratories] = useState([]);
   useEffect(() => {
-    getTests_();
+    getLaboratories_();
   }, [])
 
-  const getTests_ = () => {
-    ProductApis.getTests().then(res => {
+  const getLaboratories_ = () => {
+    LaboratoriesAPI.getLaboratories().then(res => {
       console.log(res.data.data);
-      // setLatestProducts(res.data.data);
+      setLaboratories(res.data.data);
       // setLoading(true)
 
     })
@@ -25,7 +23,7 @@ export default function Home() {
 
   return (
     <>
-      <Login/>
+      <Login data={laboratories} />
 
     </>
 
