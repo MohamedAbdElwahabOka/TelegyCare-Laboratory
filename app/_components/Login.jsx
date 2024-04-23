@@ -40,7 +40,9 @@ const Login = ({ data }) => {
     if (!user) {
       setErrorMessage('Invalid registration number or password.');
     } else {
-      router.push('/PatientID');
+      router.push(`/PatientID/${user?.attributes?.reg_Num}`);
+
+
     }
   };
 

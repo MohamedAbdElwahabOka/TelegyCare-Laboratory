@@ -4,7 +4,7 @@ import Table from './Table';
 
 import medicalrecordAPI from '../_Utils/medicalrecordAPI'
 
-function Patient_Id() {
+function Patient_Id({data}) {
 
 
 
@@ -14,7 +14,7 @@ function Patient_Id() {
   }, [])
 
   const getPatientsByLabId_ = () => {
-    medicalrecordAPI.getMedicalRecordsByLabId(123456).then(res => {
+    medicalrecordAPI.getMedicalRecordsByLabId(data).then(res => {
       console.log(res.data.data);
       setPatientsByLabId(res.data.data);
       
@@ -63,6 +63,7 @@ function Patient_Id() {
     <div>
         <Table data={patientsByLabId} />
         {/* <Table data={data} /> */}
+     
     </div>
   )
 }
