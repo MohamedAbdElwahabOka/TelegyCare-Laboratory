@@ -11,7 +11,7 @@ function Patient_Id({data}) {
   const [patientsByLabId, setPatientsByLabId] = useState([]);
   useEffect(() => {
     getPatientsByLabId_();
-  }, [])
+  }, [data])
 
   const getPatientsByLabId_ = () => {
     medicalrecordAPI.getMedicalRecordsByLabId(data).then(res => {

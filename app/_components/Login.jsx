@@ -4,8 +4,12 @@ import React, { useState } from 'react';
 import queryString from 'query-string';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
-
+// import { sessionStatus } from "../_Utils/session";
+// export const sessionStatus = false; 
 const Login = ({ data }) => {
+
+  
+  // const [sessionStatus,setSessionStatus] = useState(false);
   const [registrationNumber, setRegistrationNumber] = useState('');
   const [password, setPassword] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
@@ -41,8 +45,7 @@ const Login = ({ data }) => {
       setErrorMessage('Invalid registration number or password.');
     } else {
       router.push(`/PatientID/${user?.attributes?.reg_Num}`);
-
-
+      // setSessionStatus=!sessionStatus;
     }
   };
 
