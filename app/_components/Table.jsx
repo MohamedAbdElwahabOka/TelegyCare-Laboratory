@@ -37,9 +37,11 @@ function Table({ data }) {
             <tr className=" text-black">
               <th className="px-4 py-2">Registration number</th>
               <th className="px-4 py-2">Name</th>
+               <th className="px-4 py-2">National ID</th>
               <th className="px-4 py-2">Phone</th>
               <th className="px-4 py-2">Email</th>
               <th className="px-4 py-2">Address</th>
+         
             </tr>
           </thead>
           <tbody>
@@ -63,6 +65,12 @@ function Table({ data }) {
                {item?.attributes?.patient?.data?.attributes?.Name}
                   </Link>
                 </td>
+            
+                <td className=" px-4 py-2">
+                  <Link href={`/patient-details/${item?.attributes?.patient?.data?.id}`}>
+                {item?.attributes?.patient?.data?.attributes?.NationalId}
+                  </Link>
+                </td>
                 <td className=" px-4 py-2">
                   <Link href={`/patient-details/${item?.attributes?.patient?.data?.id}`}>
                 {item?.attributes?.patient?.data?.attributes?.phone}
@@ -75,7 +83,10 @@ function Table({ data }) {
                 </td>
                 <td className=" px-4 py-2">
                   <Link href={`/patient-details/${item?.attributes?.patient?.data?.id}`}>
-                     {item?.attributes?.patient?.data?.attributes?.Address}
+                     {item?.attributes?.patient?.data?.attributes?.Governorate},  
+                     {item?.attributes?.patient?.data?.attributes?.City}, 
+                     {item?.attributes?.patient?.data?.attributes?.Street}
+
                     
                   </Link>
                 </td>
