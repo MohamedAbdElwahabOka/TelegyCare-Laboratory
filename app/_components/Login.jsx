@@ -1,5 +1,5 @@
 "use client"
-
+import Swal from 'sweetalert2'
 import React, { useState } from 'react';
 import queryString from 'query-string';
 import Image from 'next/image';
@@ -42,9 +42,20 @@ const Login = ({ data }) => {
         item.attributes.Password == password
     );
     if (!user) {
-      setErrorMessage('Invalid registration number or password.');
+      Swal.fire({
+        title: 'Error!',
+        text: 'Oops! The Registration Number or Password you entered is incorrect. Please try again.',
+        icon: 'error',
+        confirmButtonText: 'close'
+      })
+      // setErrorMessage('Invalid registration number or password.');
     } else {
       router.push(`/PatientID/${user?.attributes?.reg_Num}`);
+      Swal.fire({
+        title: "Success!",
+        text: "Welcome to the laboratory",
+        icon: "success"
+      });
       // setSessionStatus=!sessionStatus;
     }
   };
