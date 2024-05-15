@@ -1,8 +1,10 @@
 'use client'
 import { useState } from 'react';
+import Image from 'next/image';
 
 function FileUploader() {
    const [files, setFiles] = useState([]);
+   const [imageSrc, setImageSrc] = useState(null);
 
   const handleDrop = (e) => {
     e.preventDefault();
@@ -20,24 +22,45 @@ function FileUploader() {
   };
 
   const handleSubmit = async (e) => {
+
     e.preventDefault();
     const formData = new FormData();
-    files.forEach((file) => formData.append('files', file));
+    Array.from(files).forEach((file) => formData.append('file', file));
     try {
-      const response = await fetch('/api/upload', {
+      const response = await fetch('http://localhost:5000/predict', {
         method: 'POST',
         body: formData,
       });
       if (response.ok) {
-        alert('Files uploaded successfully');
+        const data = await response.json();
+        setImageSrc(data.imageUrl);
       } else {
         alert('Failed to upload files');
       }
     } catch (error) {
-      console.error(error);
-      alert('Failed to upload files');
+      console.log('Error:', error);
     }
+
+    // e.preventDefault();
+    // const formData = new FormData();
+    // files.forEach((file) => formData.append('files', file));
+    // try {
+    //   const response = await fetch('/api/upload', {
+    //     method: 'POST',
+    //     body: formData,
+    //   });
+    //   if (response.ok) {
+    //     alert('Files uploaded successfully');
+    //   } else {
+    //     alert('Failed to upload files');
+    //   }
+    // } catch (error) {
+    //   console.error(error);
+    //   alert('Failed to upload files');
+    // }
   };
+
+
   return (
     <div>
       <div className="w-full max-w-md mx-auto mt-8 border border-gray-300 p-4 rounded-md shadow-md file-uploader">
@@ -86,6 +109,8 @@ function FileUploader() {
         Send To AI
       </button>
     </div>
+    {imageSrc && <Image src={imageSrc} alt="Uploaded" width={500} height={500} />}
+    
   
     </div>
   )
