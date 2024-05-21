@@ -1,5 +1,5 @@
 import React from 'react'
-import Sidebar from '../_components/Sidebar'
+import Sidebar from '../patient-details/[patientId]/_components/Sidebar_for_PatientD'
 import FileUploader from '../_components/FileUploader'
 function Aimodel() {
   return (
