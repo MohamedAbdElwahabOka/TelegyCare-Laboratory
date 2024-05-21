@@ -1,6 +1,6 @@
 import React from 'react'
 import SendResults from '../_components/Send_Results'
-import Sidebar from '../_components/Sidebar'
+import Sidebar from '../patient-details/[patientId]/_components/Sidebar_for_PatientD'
 
 function SendResult() {
   return (
