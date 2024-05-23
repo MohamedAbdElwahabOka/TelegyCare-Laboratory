@@ -31,10 +31,11 @@ function Table({ data }) {
           className="w-64 px-3 py-2 placeholder-gray-500 border rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:w-auto"
         />
       </div>
-      <div className="overflow-x-auto">
-        <table className="w-full ">
-          <thead>
-            <tr className=" text-black">
+      
+      <div className="overflow-auto rounded-lg shadow max-h-[500px]">
+          <table className="w-full bg-gray-200">
+            <thead className="sticky top-0 bg-white">
+              <tr>
               <th className="px-4 py-2">Registration number</th>
               <th className="px-4 py-2">Name</th>
                <th className="px-4 py-2">National ID</th>
@@ -45,9 +46,10 @@ function Table({ data }) {
             </tr>
           </thead>
           <tbody>
-            {data.map((item, index) => (
+         
+           { data.map((item, index) => (
             
-              <tr key={index} className={index % 2 === 0 ? 'bg-white' : 'bg-transparent'}>
+              <tr key={index} >
                 {item?.attributes?.pres_state == 1 ? <>
 
                 <td className=" px-4 py-2">
@@ -86,14 +88,20 @@ function Table({ data }) {
                      {item?.attributes?.patient?.data?.attributes?.Governorate},  
                      {item?.attributes?.patient?.data?.attributes?.City}, 
                      {item?.attributes?.patient?.data?.attributes?.Street}
-
-                    
+                      
                   </Link>
+          
                 </td>
-                </> : <></>}
-                
+              
+                </> : <></>
+                }
+
               </tr>
-            ))}
+    
+            )
+            )
+            }
+                
           </tbody>
         </table>
       </div>
