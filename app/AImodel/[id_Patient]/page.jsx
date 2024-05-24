@@ -1,7 +1,7 @@
 'use client'
 import React from 'react'
 import Sidebar_for_PatientD from '../../patient-details/[patientId]/_components/Sidebar_for_PatientD'
-import FileUploader from '../../_components/FileUploader'
+import FileUploader from '../_components/FileUploader'
 
 import { useSearchParams } from 'next/navigation';
 
