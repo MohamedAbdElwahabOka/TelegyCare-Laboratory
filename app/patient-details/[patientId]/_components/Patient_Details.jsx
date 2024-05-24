@@ -1,6 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
-function Patient_Details({patient,medicalrec}) {
+function Patient_Details({patient,medicalrec,labRegNum,PatienID}) {
   console.log(medicalrec)
   console.log(patient);
   return (
@@ -61,6 +61,7 @@ function Patient_Details({patient,medicalrec}) {
 </div></div>
 
 <br/>
+<div className="grid grid-cols-2 gap-4">
     <fieldset className="border border-gray-300 p-4 rounded-md">
       <legend className="text-lg font-semibold mb-2">Doctor Details</legend>
       <div className="flex items-center mb-4">
@@ -71,16 +72,48 @@ function Patient_Details({patient,medicalrec}) {
       <div className="flex items-center mb-4">
         <div className="font-semibold mr-2 w-24">Reg_Num:</div>
         <span>{medicalrec?.[0]?.attributes?.doctor?.data?.attributes?.reg_Num}</span>
-        {/* {console.log(medicalrec?.[0]?.attributes)} */}
+   
       </div>
     
       
     </fieldset>
+    
+    
+    <fieldset className="border border-gray-300 p-4 rounded-md">
+      <legend className="text-lg font-semibold mb-2">Tests</legend>
+      <div className="flex items-center mb-4">
+       
+      <span>
+  {patient?.attributes?.medical_records?.data?.[0]?.attributes?.Test_Orders!== null && patient?.attributes?.medical_records?.data?.[0]?.attributes?.Test_Orders!== undefined
+   ? patient?.attributes?.medical_records?.data?.[0]?.attributes?.Test_Orders.split(/\s*\d+\.\s+/)
+     .filter(Boolean)
+     .map((test, index) => (
+        <div key={index} className="mb-2">
+          {index + 1}. {test}
+        </div>
+      ))
+    : 'No Test Orders'}
+</span>
+          
+      </div>
+      
+      
+    
+      
+    </fieldset>
+
+
+    </div>
+    
     <div className="flex justify-end">
- <Link href="\Orders"
+
+
+
+
+ <Link href={`/SendResult/${PatienID}?labRegNum=${labRegNum}`}
 
   className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-      Test orders
+      Send Result
     </Link>
 </div>
   </div>

@@ -30,6 +30,19 @@ function Sidebar({data}) {
           text: "Payment",
           isActive: false,
         },
+        {
+          id: 7,
+          icon: (
+            <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M16 3C23.18 3 29 8.82 29 16C29 23.18 23.18 29 16 29C8.82 29 3 23.18 3 16C3 8.82 8.82 3 16 3ZM16 27C22.07 27 27 22.07 27 16C27 9.93 22.07 5 16 5C9.93 5 5 9.93 5 16C5 22.07 9.93 27 16 27ZM13.41 21.41L14.83 20L11.83 17H23V15H11.83L14.83 12L13.41 10.58L8 16L13.41 21.41Z" fill="white"/>
+          </svg>
+          
+          ),
+          link: `/`,
+          text: "Logout",
+          isActive: false,
+        }
+        
         
       ]
   const [sidebarToggled, setSidebarToggled] = useState(false)

@@ -1,68 +1,62 @@
 'use client'
 import { useEffect, useState } from 'react';
 import Table from './Table';
+import Swal from 'sweetalert2'
 
 import medicalrecordAPI from '../_Utils/medicalrecordAPI'
 
 function Patient_Id({data}) {
 
+  const [isLoading, setIsLoading] = useState(true);
 
 
-  const [patientsByLabId, setPatientsByLabId] = useState([]);
+const [patientsByLabId, setPatientsByLabId] = useState([]);
+
   useEffect(() => {
     getPatientsByLabId_();
   }, [data])
 
   const getPatientsByLabId_ = () => {
-    medicalrecordAPI.getMedicalRecordsByLabId(data).then(res => {
+    Swal.fire({
+      title: 'Loading...',
+      html: '<img class="my-loading-gif" src="/heart_loading.gif" alt="Loading..." />',
+      showConfirmButton: false,
+      allowOutsideClick: false,
+      allowEscapeKey: false,
+      allowEnterKey: false,
+      customClass: {
+        popup: 'my-custom-popup'
+      }
+   
+    });
+
+
+      medicalrecordAPI.getMedicalRecordsByLabId(data).then(res => {
       console.log(res.data.data);
       setPatientsByLabId(res.data.data);
       
-
+ 
+      setIsLoading(false);
+      Swal.close();
     })
   }
+console.log(data)
 
-    // const [data, setData] = useState([]); 
-    
-    // useEffect(() => {
-    //     const fetchedData = [
-    //       {
-    //         "Registrationnumber": "R123456",
-    //         "Name": "John Doe",
-    //         "Phone": "+1234567890",
-    //         "Email": "john.doe@example.com",
-    //         "Address": "123 Main St, City, Country"
-    //       },
-    //       {
-    //         "Registrationnumber": "R987654",
-    //         "Name": "Jane Smith",
-    //         "Phone": "+1987654321",
-    //         "Email": "jane.smith@example.com",
-    //         "Address": "456 Elm St, Town, Country"
-    //       },
-    //       {
-    //         "Registrationnumber": "R654321",
-    //         "Name": "Alice Johnson",
-    //         "Phone": "+1122334455",
-    //         "Email": "alice.johnson@example.com",
-    //         "Address": "789 Oak St, Village, Country"
-    //       },
-    //       {
-    //         "Registrationnumber": "R321654",
-    //         "Name": "Bob Brown",
-    //         "Phone": "+9876543210",
-    //         "Email": "bob.brown@example.com",
-    //         "Address": "321 Pine St, Hamlet, Country"
-    //       }
-    //     ];
-    
-    //     setData(fetchedData);
-    // }, []);
-    
   return (
+
     <div>
-        <Table data={patientsByLabId} />
-        {/* <Table data={data} /> */}
+    {      isLoading ?(
+   
+      <div className="flex items-center justify-center min-h-screen">
+      <h1>Loading...</h1></div>)        
+      :(
+        <Table labRegNum={data} data={patientsByLabId} />
+      )}
+
+
+   
+
+
      
     </div>
   )
