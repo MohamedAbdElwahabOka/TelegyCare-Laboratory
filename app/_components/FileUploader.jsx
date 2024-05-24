@@ -1,8 +1,10 @@
 'use client'
 import { useState } from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 
-function FileUploader() {
+function FileUploader({PatienID,labRegNum}) {
+  
    const [files, setFiles] = useState([]);
    const [imageSrc, setImageSrc] = useState(null);
 
@@ -41,23 +43,6 @@ function FileUploader() {
       console.log('Error:', error);
     }
 
-    // e.preventDefault();
-    // const formData = new FormData();
-    // files.forEach((file) => formData.append('files', file));
-    // try {
-    //   const response = await fetch('/api/upload', {
-    //     method: 'POST',
-    //     body: formData,
-    //   });
-    //   if (response.ok) {
-    //     alert('Files uploaded successfully');
-    //   } else {
-    //     alert('Failed to upload files');
-    //   }
-    // } catch (error) {
-    //   console.error(error);
-    //   alert('Failed to upload files');
-    // }
   };
 
 
@@ -101,14 +86,21 @@ function FileUploader() {
           ))}
         </ul>
       </div>
-      <button
-        type="submit"
-        onClick={handleSubmit}
+      <Link
+      href={`/AiResult/${PatienID}?labRegNum=${labRegNum}`}
+        // type="submit"
+        // onClick={handleSubmit}
         className="bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600 w-full mt-4"
       >
         Send To AI
-      </button>
+      </Link>
     </div>
+
+
+
+
+
+
     {imageSrc && <Image src={imageSrc} alt="Uploaded" width={500} height={500} />}
     
   

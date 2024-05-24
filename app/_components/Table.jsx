@@ -2,22 +2,7 @@
 import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
 
-function Table({ data }) {
-    // const [filteredData, setFilteredData] = useState(data);
-    // const [searchTerm, setSearchTerm] = useState('');
-    // useEffect(() => {
-    //     if (searchTerm) {
-    //       const filtered = data.filter((item) =>
-    //         Object.values(item)
-    //           .join('')
-    //           .toLowerCase()
-    //           .includes(searchTerm.toLowerCase())
-    //       );
-    //       setFilteredData(filtered);
-    //     } else {
-    //       setFilteredData(data);
-    //     }
-    //   }, [searchTerm, data]);
+function Table({ data ,labRegNum}) {
 
   return (
     <div className="p-4 bg-gray-100">
@@ -26,8 +11,7 @@ function Table({ data }) {
         <input
           type="text"
           placeholder="Search..."
-          // value={searchTerm}
-          // onChange={(e) => setSearchTerm(e.target.value)}
+        
           className="w-64 px-3 py-2 placeholder-gray-500 border rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:w-auto"
         />
       </div>
@@ -53,38 +37,34 @@ function Table({ data }) {
                 {item?.attributes?.pres_state == 1 ? <>
 
                 <td className=" px-4 py-2">
-                  <Link href={`/patient-details/${item?.attributes?.patient?.data?.id}`}>
+                  <Link href={`/patient-details/${item?.attributes?.patient?.data?.id}?labRegNum=${labRegNum}`}>
                     #{item?.attributes?.patient?.data?.attributes?.reg_Num}
-                    {/* {console.log(item)}
-                    {console.log(item?.attributes?.patient?.data?.attributes?.Name)}
-                    {console.log(item.id)} */}
-                    {/* { console.log(item?.attributes?.pres_state)} */}
                   </Link>
                 </td>
                 <td className=" px-4 py-2">
-                  <Link href={`/patient-details/${item?.attributes?.patient?.data?.id}`}>
+                  <Link href={`/patient-details/${item?.attributes?.patient?.data?.id}?labRegNum=${labRegNum}`}>
                     
                {item?.attributes?.patient?.data?.attributes?.Name}
                   </Link>
                 </td>
             
                 <td className=" px-4 py-2">
-                  <Link href={`/patient-details/${item?.attributes?.patient?.data?.id}`}>
+                  <Link href={`/patient-details/${item?.attributes?.patient?.data?.id}?labRegNum=${labRegNum}`}>
                 {item?.attributes?.patient?.data?.attributes?.NationalId}
                   </Link>
                 </td>
                 <td className=" px-4 py-2">
-                  <Link href={`/patient-details/${item?.attributes?.patient?.data?.id}`}>
+                  <Link href={`/patient-details/${item?.attributes?.patient?.data?.id}?labRegNum=${labRegNum}`}>
                 {item?.attributes?.patient?.data?.attributes?.phone}
                   </Link>
                 </td>
                 <td className=" px-4 py-2">
-                  <Link href={`/patient-details/${item?.attributes?.patient?.data?.id}`}>
+                  <Link href={`/patient-details/${item?.attributes?.patient?.data?.id}?labRegNum=${labRegNum}`}>
                     {item?.attributes?.patient?.data?.attributes?.Email}
                   </Link>
                 </td>
                 <td className=" px-4 py-2">
-                  <Link href={`/patient-details/${item?.attributes?.patient?.data?.id}`}>
+                  <Link href={`/patient-details/${item?.attributes?.patient?.data?.id}?labRegNum=${labRegNum}`}>
                      {item?.attributes?.patient?.data?.attributes?.Governorate},  
                      {item?.attributes?.patient?.data?.attributes?.City}, 
                      {item?.attributes?.patient?.data?.attributes?.Street}
