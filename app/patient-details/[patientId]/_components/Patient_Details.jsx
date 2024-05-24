@@ -3,6 +3,9 @@ import Link from 'next/link';
 function Patient_Details({patient,medicalrec,labRegNum,PatienID}) {
   console.log(medicalrec)
   console.log(patient);
+
+
+  
   return (
     <div className="bg-white p-4 shadow-md rounded-md">
     <div className="text-xl font-semibold mb-4">#{patient?.attributes?.reg_Num}
