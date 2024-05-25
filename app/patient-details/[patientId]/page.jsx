@@ -60,7 +60,7 @@ function patient_details({params}) {
 
   return (
     <div className="flex h-screen">  
-      <Sidebar_for_PatientD PatienID={params.patientId} labRegNum={labRegNumber} className="w-64 bg-gray-800 text-white px-4 py-8" />
+      <Sidebar_for_PatientD PatientID={params.patientId} labRegNum={labRegNumber} className="w-64 bg-gray-800 text-white px-4 py-8" />
       <div className="flex-grow bg-gray-100 p-8">
     
       {      isLoading ?(

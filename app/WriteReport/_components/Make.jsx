@@ -19,7 +19,7 @@ const Make = () => {
       doc.setFontSize(14);
 
       
-      //***********wil Mohamed aaabdelwahab get this info from API********* */
+      //***********wil Mohammed Abdelwahab get this info from API********* */
       // doc.text('Name: ' + data.name, 10, 30);
       // doc.text('Email: ' + data.email, 10, 45);
       // doc.text('Date of Birth: ' + data.date, 10, 60);
