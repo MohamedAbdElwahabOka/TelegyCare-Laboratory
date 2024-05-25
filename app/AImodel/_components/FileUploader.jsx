@@ -5,6 +5,8 @@ import Link from 'next/link';
 import Swal from 'sweetalert2'
 import { useRouter } from 'next/navigation';
 // import sharp from 'sharp';
+// import { v4 as uuidv4 } from 'uuid';
+// import fs from 'fs/promises';
 
 function FileUploader({PatienID,labRegNum}) {
 
