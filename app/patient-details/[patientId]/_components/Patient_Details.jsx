@@ -113,11 +113,11 @@ function Patient_Details({patient,medicalrec,labRegNum,PatienID}) {
 
 
 
- <Link href={`/SendResult/${PatienID}?labRegNum=${labRegNum}`}
+ {/* <Link href={`/SendResult/${PatienID}?labRegNum=${labRegNum}`}
 
   className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
       Send Result
-    </Link>
+    </Link> */}
 </div>
   </div>
   )
