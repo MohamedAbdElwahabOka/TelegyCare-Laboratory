@@ -17,6 +17,15 @@
   margin: 0 auto;
 }
 
+.my-ai-gif {
+  width: 50x;
+  /* Adjust as needed */
+  height: 50px;
+  /* Adjust as needed */
+  display: block;
+  margin: 0 auto;
+}
+
 /* :root {
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
