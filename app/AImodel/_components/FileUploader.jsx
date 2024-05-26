@@ -27,17 +27,31 @@ function FileUploader({PatienID,labRegNum}) {
     e.preventDefault();
     const newFiles = Array.from(e.target.files);
     setFiles((prevFiles) => [...prevFiles, ...newFiles]);
-    setOriginalImgSrc(URL.createObjectURL(e.target.files[0]).replace('blob:http://localhost:3000/', ''));
+    // setOriginalImgSrc(URL.createObjectURL(e.target.files[0]).replace('blob:http://localhost:3000/', ''));
 
+   
     const formData = new FormData();
     newFiles.forEach((file) => formData.append('file', file));
     try {
+      Swal.fire({
+        title: 'Loading...',
+        html: '<img class="my-loading-gif" src="/heart_loading.gif" alt="Loading..." />',
+        timer:1500,
+        showConfirmButton: false,
+        allowOutsideClick: false,
+        allowEscapeKey: false,
+        allowEnterKey: false,
+        customClass: {
+          popup: 'my-custom-popup'
+        }
+     
+      });
       const response = await fetch('http://localhost:5000/predict', {
         method: 'POST',
         body: formData,
       });
       console.log(response)
-      
+     
       if (response.ok) {
         const jsonData = await response.json();
         const imageUrl = jsonData.image_url;
@@ -64,14 +78,16 @@ function FileUploader({PatienID,labRegNum}) {
         confirmButtonText: 'close'
       })
     }
+   
   };
+  
 
 
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     Swal.fire({
-      title: 'Loading...',
+      title: 'Sending to AI',
       html: '<img class="my-ai-gif" src="/icons8-ai.gif" alt="Loading..." />',
       timer:4000,
       showConfirmButton: false,
@@ -82,11 +98,17 @@ function FileUploader({PatienID,labRegNum}) {
         popup: 'my-custom-popup'
       }
     }).then(() => {
-      if(OriginalImgSrc!= null && SegmentedImgSrc != null){
+      if(SegmentedImgSrc){
         console.log("done")
-        router.push(`/AiResult/${PatienID}?labRegNum=${labRegNum}&OriginalImgSrc=${OriginalImgSrc}&SegmentedImgSrc=${SegmentedImgSrc}`);
+        router.push(`/AiResult/${PatienID}?labRegNum=${labRegNum}&SegmentedImgSrc=${SegmentedImgSrc}`);
       }else{
         console.log("none")
+        Swal.fire({
+          title: 'Error!',
+          text: 'Oops! Send Again',
+          icon: 'error',
+          confirmButtonText: 'close'
+        })
       }
     });
   };
@@ -147,9 +169,9 @@ function FileUploader({PatienID,labRegNum}) {
           ))}
         </ul>
       </div>
-      {process.env.NEXT_PUBLIC_BLOB&&OriginalImgSrc && (
+      {process.env.NEXT_PUBLIC_MODEL_HOST_UPLOAD&&SegmentedImgSrc && (
   <div className="flex justify-center items-center ">
-    <img src={`blob:http://localhost:3000/${OriginalImgSrc}`} alt="Preview" className="w-32 h-32 object-cover " />
+    <img src={`http://localhost:5000/upload/${SegmentedImgSrc}`} alt="Preview" className="w-32 h-32 object-cover " />
   </div>)}
       <button
       // href={`/AiResult/${PatienID}?labRegNum=${labRegNum}`}

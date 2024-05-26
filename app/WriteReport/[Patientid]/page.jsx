@@ -50,13 +50,13 @@ function Ai_result({params}) {
      <Sidebar_for_PatientD PatientID={params.Patientid}  labRegNum={labRegNumber}  className="w-64 bg-gray-800 text-white px-4 py-8" />
       <div className="flex-grow bg-gray-100 p-8">
 
-      <Image
+                   {/* <Image
                     src={process.env.NEXT_PUBLIC_BLOB + OriginalImgSrc}
                     width={300}
                     height={300}
                     alt="Aortic Ultrasound Image"
                     className="rounded-2xl"
-                  />
+                  /> */}
       <form>
         <div>
           <label>Part:</label>
