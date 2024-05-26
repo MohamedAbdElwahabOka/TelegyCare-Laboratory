@@ -18,8 +18,8 @@ export default function AorticSegmentation({PatientID}) {
   const OriginalImgSrc = searchParams.get('OriginalImgSrc')
   const SegmentedImgSrc = searchParams.get('SegmentedImgSrc')
   console.log(labRegNum)
-  console.log(process.env.NEXT_PUBLIC_BLOB + OriginalImgSrc)
-  console.log(process.env.NEXT_PUBLIC_MODEL_HOST + SegmentedImgSrc)
+  console.log(process.env.NEXT_PUBLIC_MODEL_HOST_UPLOAD + OriginalImgSrc)
+  console.log(process.env.NEXT_PUBLIC_MODEL_HOST_OUTPUT + SegmentedImgSrc)
 
   return (
     <div>
@@ -29,7 +29,7 @@ export default function AorticSegmentation({PatientID}) {
         <div className="flex space-x-4 mb-4">
           <button 
           onClick={() =>{
-            router.push(`/WriteReport/${PatientID}?labRegNum=${labRegNum}&OriginalImgSrc=${OriginalImgSrc}&SegmentedImgSrc=${SegmentedImgSrc}`);
+            router.push(`/WriteReport/${PatientID}?labRegNum=${labRegNum}&SegmentedImgSrc=${SegmentedImgSrc}`);
           }
             
           }
@@ -46,7 +46,7 @@ export default function AorticSegmentation({PatientID}) {
               <div className="flex space-x-20">
                 <div>
                   <Image
-                    src={process.env.NEXT_PUBLIC_BLOB + OriginalImgSrc}
+                    src={process.env.NEXT_PUBLIC_MODEL_HOST_UPLOAD + SegmentedImgSrc}
                     width={300}
                     height={300}
                     alt="Aortic Ultrasound Image"
@@ -57,7 +57,7 @@ export default function AorticSegmentation({PatientID}) {
 
                 <div>
                   <Image
-                    src={process.env.NEXT_PUBLIC_MODEL_HOST + SegmentedImgSrc}
+                    src={process.env.NEXT_PUBLIC_MODEL_HOST_OUTPUT + SegmentedImgSrc}
                     width={300}
                     height={300}
                     alt="Segmentation of the Ultrasound Image"
@@ -65,23 +65,26 @@ export default function AorticSegmentation({PatientID}) {
                   />
                   <p className="text-center">Segmentation of the Ultrasound Image</p>
                 </div>
-
-                {/* <div> */}
-                  {/* <Image
-                    src={process.env.NEXT_PUBLIC_MODEL_HOST + SegmentedImgSrc}
+                <div style={{ position: 'relative', width: 300, height: 300 }}>
+                  <Image
+                    src={process.env.NEXT_PUBLIC_MODEL_HOST_UPLOAD + SegmentedImgSrc}
                     width={300}
                     height={300}
-                    alt="Another Ultrasound Image"
+                    alt="Aortic Ultrasound Image"
                     className="rounded-2xl"
-                    style={{ filter: 'brightness(0) saturate(100%) hue-rotate(120deg)' }}
+                    style={{ position: 'absolute', top: 0, left: 0 }}
                   />
-                  <canvas ref={canvasRef} />
-                  <span ref={spanRef} />
-                  <Component {...pageProps} /> */}
-                  {/* <FindWhitePixel imageSrc={process.env.NEXT_PUBLIC_MODEL_HOST + SegmentedImgSrc} /> */}
+                  <Image
+                    src={process.env.NEXT_PUBLIC_MODEL_HOST_OUTPUT + SegmentedImgSrc}
+                    width={300}
+                    height={300}
+                    alt="Segmentation of the Ultrasound Image"
+                    className="rounded-2xl"
+                    style={{ position: 'absolute', top: 0, left: 0, opacity: 0.5 }}
+                  />
+                  <p className="text-center">Overlay of Aortic Ultrasound Image and Segmentation</p>
 
-                  {/* <p className="text-center">Another Ultrasound Image</p> */}
-                {/* </div> */}
+</div>
               </div>
             </div>
        </div>
