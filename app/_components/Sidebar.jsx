@@ -2,9 +2,18 @@
 import Link from 'next/link'
 import React, { useEffect, useState } from 'react'
 // import Image from "next/image";
-
+import { useSearchParams } from 'next/navigation';
 function Sidebar({data}) {
   console.log(data)
+
+  const searchParams = useSearchParams();
+  const [isActive, setIsActive] = useState();
+
+  const PatientIdIsActive = searchParams.get('P')=="NewPatient" ? true : false;
+  const PaymentActive = searchParams.get('P')=="PatientList" ? true : false;
+
+
+
     const navItems = [
         {
           id: 1,
@@ -15,25 +24,31 @@ function Sidebar({data}) {
           ,
           link: `/PatientID/${data}`,
           text: "Patient ID",
-          isActive: true,
+          isActive: PatientIdIsActive,
         },
        
        
         {
           id: 6,
-          icon: <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+          icon: 
+          <svg width="32" height="32" 
+          viewBox="0 0 32 32" fill="none" 
+          xmlns="http://www.w3.org/2000/svg"
+          className={isActive ? 'icon active' : 'icon'}>
           <path d="M6.5 5C5.30653 5 4.16193 5.47411 3.31802 6.31802C2.47411 7.16193 2 8.30653 2 9.5V11H30V9.5C30 8.30653 29.5259 7.16193 28.682 6.31802C27.8381 5.47411 26.6935 5 25.5 5H6.5ZM2 22.5V13H30V22.5C30 23.6935 29.5259 24.8381 28.682 25.682C27.8381 26.5259 26.6935 27 25.5 27H6.5C5.30653 27 4.16193 26.5259 3.31802 25.682C2.47411 24.8381 2 23.6935 2 22.5ZM21 19C20.7348 19 20.4804 19.1054 20.2929 19.2929C20.1054 19.4804 20 19.7348 20 20C20 20.2652 20.1054 20.5196 20.2929 20.7071C20.4804 20.8946 20.7348 21 21 21H24C24.2652 21 24.5196 20.8946 24.7071 20.7071C24.8946 20.5196 25 20.2652 25 20C25 19.7348 24.8946 19.4804 24.7071 19.2929C24.5196 19.1054 24.2652 19 24 19H21Z" fill="white"/>
           </svg>
           ,
           link: `/checkout/${data}`,
           // https://payment-sable-delta.vercel.app/ 
           text: "Payment",
-          isActive: false,
+          isActive: PaymentActive,
         },
         {
           id: 7,
           icon: (
-            <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <svg width="32" height="32" viewBox="0 0 32 32" fill="none" 
+            className={isActive ? 'icon active' : 'icon'}
+            xmlns="http://www.w3.org/2000/svg">
             <path d="M16 3C23.18 3 29 8.82 29 16C29 23.18 23.18 29 16 29C8.82 29 3 23.18 3 16C3 8.82 8.82 3 16 3ZM16 27C22.07 27 27 22.07 27 16C27 9.93 22.07 5 16 5C9.93 5 5 9.93 5 16C5 22.07 9.93 27 16 27ZM13.41 21.41L14.83 20L11.83 17H23V15H11.83L14.83 12L13.41 10.58L8 16L13.41 21.41Z" fill="white"/>
           </svg>
           
