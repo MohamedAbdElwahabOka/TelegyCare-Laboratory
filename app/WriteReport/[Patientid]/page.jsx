@@ -43,7 +43,7 @@ function Ai_result({params}) {
     await generatePDF(formData);
   };
 
-  console.log(params.Patientid)
+
   return (
     <div>
      <div className="flex h-screen">  
@@ -57,7 +57,7 @@ function Ai_result({params}) {
                     alt="Aortic Ultrasound Image"
                     className="rounded-2xl"
                   /> */}
-      <form>
+      {/* <form>
         <div>
           <label>Part:</label>
           <input type="text" name="part" value={formData.part} onChange={handleChange} />
@@ -76,8 +76,72 @@ function Ai_result({params}) {
         </div>
 
       </form>
-      <button onClick={handleGeneratePDF}>Generate PDF</button>
+      <button onClick={handleGeneratePDF}>Generate PDF</button> */}
 
+
+
+<div className="flex items-center justify-center min-h-screen bg-gray-100">
+      <div className="w-full max-w-md p-6 bg-white border border-gray-300 rounded shadow-lg">
+      <div className="mb-4 flex items-center">
+          <div className="flex items-center mr-24">
+            <label className="block text-gray-700 text-sm font-bold mr-2">Name:</label>
+            <label className="block text-gray-700 text-sm font-bold ">h</label>
+          </div>
+          <div className="flex items-center">
+            <label className="block text-gray-700 text-sm font-bold mr-2">Age:</label>
+            <label className="block text-gray-700 text-sm font-bold">20</label>
+          </div>
+        </div>
+        <form className="space-y-4">
+          <div>
+            <label className="block text-gray-700 text-sm font-bold mb-2">Part:</label>
+            <input
+              type="text"
+              name="part"
+              value={formData.part}
+              onChange={handleChange}
+              className="w-full px-3 py-2 border border-gray-300 rounded"
+            />
+          </div>
+          <div>
+            <label className="block text-gray-700 text-sm font-bold mb-2">Technique:</label>
+            <textarea
+              name="technique"
+              value={formData.technique}
+              onChange={handleChange}
+              className="w-full px-3 py-2 border border-gray-300 rounded"
+            />
+          </div>
+          <div>
+            <label className="block text-gray-700 text-sm font-bold mb-2">Findings:</label>
+            <textarea
+              name="findings"
+              value={formData.findings}
+              onChange={handleChange}
+              className="w-full px-3 py-2 border border-gray-300 rounded"
+            />
+          </div>
+          <div>
+            <label className="block text-gray-700 text-sm font-bold mb-2">Age:</label>
+            <input
+              type="number"
+              name="age"
+              value={formData.age}
+              onChange={handleChange}
+              className="w-full px-3 py-2 border border-gray-300 rounded"
+            />
+          </div>
+        </form>
+        <div className="flex justify-end mt-4">
+          <button
+            onClick={handleGeneratePDF}
+            className="text-blue-500 hover:text-blue-700 font-bold"
+          >
+            Generate PDF
+          </button>
+        </div>
+      </div>
+    </div>
 
       </div>
     </div>
