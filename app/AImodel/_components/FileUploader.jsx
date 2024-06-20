@@ -1,14 +1,15 @@
 'use client'
 import { useState } from 'react';
-import Image from 'next/image';
-import Link from 'next/link';
-import Swal from 'sweetalert2'
+import { useEffect} from 'react'
+
 import { useRouter } from 'next/navigation';
+// import PatientAPI from '../../_Utils/PatientAPI';
+
 // import sharp from 'sharp';
 // import { v4 as uuidv4 } from 'uuid';
 // import fs from 'fs/promises';
 
-function FileUploader({PatienID,labRegNum}) {
+function FileUploader({PatientID,labRegNum,patientDetails}) {
 
   console.log(process.env.NEXT_PUBLIC_BLOB); 
   console.log(process.env.NEXT_PUBLIC_MODEL_HOST); 
@@ -100,7 +101,7 @@ function FileUploader({PatienID,labRegNum}) {
     }).then(() => {
       if(SegmentedImgSrc){
         console.log("done")
-        router.push(`/AiResult/${PatienID}?labRegNum=${labRegNum}&SegmentedImgSrc=${SegmentedImgSrc}`);
+        router.push(`/AiResult/${PatientID}?labRegNum=${labRegNum}&SegmentedImgSrc=${SegmentedImgSrc}`);
       }else{
         console.log("none")
         Swal.fire({
@@ -128,9 +129,54 @@ function FileUploader({PatienID,labRegNum}) {
 
 
 
-
   return (
+
     <div>
+      <div className="grid grid-cols-2 gap-4">
+      <fieldset className="border border-gray-300 p-4 rounded-md">
+      <legend className="text-lg font-semibold mb-2">Patient Details</legend>
+      <div className="flex items-center mb-4">
+        <div className="font-semibold mr-2 w-24">Name:</div>
+
+        <span>{patientDetails?.attributes?.Name}</span>
+      </div>
+      <div className="flex items-center mb-4">
+        <div className="font-semibold mr-2 w-24">Email:</div>
+        <span>{patientDetails?.attributes?.Email}</span>
+      </div>
+      <div className="flex items-center mb-4">
+        <div className="font-semibold mr-2 w-24">Phone Number:</div>
+        <span className="break-all">{patientDetails?.attributes?.phone}</span>
+      </div>
+      <div className="flex items-center mb-4">
+        <div className="font-semibold mr-2 w-24">National ID:</div>
+        <span>{patientDetails?.attributes?.NationalId}</span>
+        <br/><br/>
+      </div>
+    </fieldset>
+    
+    
+    <fieldset className="border border-gray-300 p-4 rounded-md">
+      <legend className="text-lg font-semibold mb-2">Tests</legend>
+      <div className="flex items-center mb-4">
+       
+      <span>
+  {patientDetails?.attributes?.medical_records?.data?.[0]?.attributes?.Test_Orders!== null && patientDetails?.attributes?.medical_records?.data?.[0]?.attributes?.Test_Orders!== undefined
+   ? patientDetails?.attributes?.medical_records?.data?.[0]?.attributes?.Test_Orders.split(/\s*\d+\.\s+/)
+     .filter(Boolean)
+     .map((test, index) => (
+        <div key={index} className="mb-2">
+          {index + 1}. {test}
+        </div>
+      ))
+    : 'No Test Orders'}
+</span>
+          
+      </div>  
+    </fieldset>
+    </div>
+    <br/><br/>
+    
       <div className="w-full max-w-md mx-auto mt-8 border border-gray-300 p-4 rounded-md shadow-md file-uploader">
       <div
         className="w-full h-64 border-dashed border-2 border-gray-300 border-2 rounded-md flex flex-col justify-center items-center drop-zone"
@@ -174,7 +220,7 @@ function FileUploader({PatienID,labRegNum}) {
     <img src={`http://localhost:5000/upload/${SegmentedImgSrc}`} alt="Preview" className="w-32 h-32 object-cover " />
   </div>)}
       <button
-      // href={`/AiResult/${PatienID}?labRegNum=${labRegNum}`}
+      // href={`/AiResult/${PatientID}?labRegNum=${labRegNum}`}
         type="submit"
         onClick={
 

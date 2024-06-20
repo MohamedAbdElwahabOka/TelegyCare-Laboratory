@@ -1,12 +1,25 @@
-function SendResults() {
+'use client'
+import React from "react";
+
+
+function SendResults({medicalRecords}) {
+ 
     return (
     // <div class="max-w-md mx-auto bg-gray-100 rounded-lg border shadow-md p-10">
+  
     <div>
       <h5 className="text-lg font-semibold text-gray-700 mr-10">Send Result</h5>
         <div className="max-w-md mx-auto bg-white rounded-lg border shadow-md p-4">
           <div className="mb-3">
-            <h5 className="text-lg font-semibold">Dr. Abdelrahman Abdelwahab</h5>
-            <p className="text-sm text-gray-500 ml-7">NY community Hospital-23</p>
+            <h5 className="text-lg font-semibold">
+              {/* Dr. Abdelrahman Abdelwahab */}
+              
+        <span>Dr. {medicalRecords[0]?.attributes?.doctor?.data?.attributes?.Name}</span>
+              </h5>
+            <p className="text-sm text-gray-500 ml-7">
+              {/* NY community Hospital-23 */}
+              <span>{medicalRecords[0]?.attributes?.doctor?.data?.attributes?.Type_of_Spec}</span>
+              </p>
             <hr className="w-60 ml-1 mt-2" />
           </div>
           <hr className="my-1 mt-40" />

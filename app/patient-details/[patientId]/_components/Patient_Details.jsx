@@ -1,6 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
-function Patient_Details({patient,medicalrec,labRegNum,PatienID}) {
+function Patient_Details({patient,medicalrec}) {
   console.log(medicalrec)
   console.log(patient);
 
@@ -9,10 +9,10 @@ function Patient_Details({patient,medicalrec,labRegNum,PatienID}) {
   return (
     <div className="bg-white p-4 shadow-md rounded-md">
     <div className="text-xl font-semibold mb-4">#{patient?.attributes?.reg_Num}
-    
     </div>
+
     <div className="grid grid-cols-2 gap-4">
-  <div className="w-full">
+    <div className="w-full">
     <fieldset className="border border-gray-300 p-4 rounded-md">
       <legend className="text-lg font-semibold mb-2">Patient Details</legend>
       <div className="flex items-center mb-4">
@@ -46,8 +46,8 @@ function Patient_Details({patient,medicalrec,labRegNum,PatienID}) {
         <div className="flex items-center mb-4">
             <div className="font-semibold mr-2 w-24">Blood Pressure:</div>
             <span className="mr-20">{patient?.attributes?.medical_records?.data?.[0]?.attributes?.Blood_Pressure}</span> {/* Added mr-4 for space */}
-            <div className="font-semibold mr-2 w-24">Pulse:</div>
-            <span>{patient?.attributes?.medical_records?.data?.[0]?.attributes?.Pulse}</span>
+            {/* <div className="font-semibold mr-2 w-24">Pulse:</div>
+            <span>{patient?.attributes?.medical_records?.data?.[0]?.attributes?.Pulse}</span> */}
         </div>
 
         <div className="flex items-center mb-4">
