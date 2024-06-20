@@ -10,6 +10,7 @@ import { useSearchParams } from 'next/navigation';
 
 function patient_details({params}) {
   const [isLoading, setIsLoading] = useState(true);
+  
   const searchParams = useSearchParams();
   const labRegNumber = searchParams.get('labRegNum');
   

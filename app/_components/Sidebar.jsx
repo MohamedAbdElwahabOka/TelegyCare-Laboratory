@@ -75,7 +75,8 @@ function Sidebar({data}) {
             <svg width="32" height="32" viewBox="0 0 32 32" fill="none" 
             className={isActive ? 'icon active' : 'icon'}
             xmlns="http://www.w3.org/2000/svg">
-            <path d="M16 3C23.18 3 29 8.82 29 16C29 23.18 23.18 29 16 29C8.82 29 3 23.18 3 16C3 8.82 8.82 3 16 3ZM16 27C22.07 27 27 22.07 27 16C27 9.93 22.07 5 16 5C9.93 5 5 9.93 5 16C5 22.07 9.93 27 16 27ZM13.41 21.41L14.83 20L11.83 17H23V15H11.83L14.83 12L13.41 10.58L8 16L13.41 21.41Z" fill="white"/>
+            <path d="M16 3C23.18 3 29 8.82 29 16C29 23.18 23.18 29 16 29C8.82 29 3 23.18 3 16C3 8.82 8.82 3 16 3ZM16 27C22.07 27 27 22.07 27 16C27 9.93 22.07 5 16 5C9.93 5 5 9.93 5 16C5 22.07 9.93 27 16 27ZM13.41 21.41L14.83 20L11.83 17H23V15H11.83L14.83 12L13.41 10.58L8 16L13.41 21.41Z" 
+            fill="currentColor"/>
           </svg>
           
           ),
@@ -99,10 +100,10 @@ function Sidebar({data}) {
     <aside className={`
         fixed h-[100dvh] overflow-hidden lg:static w-11/12 max-w-[18rem] md:w-72 transition-all rounded-r-2xl bg-white dark:bg-[#0070CD] shadow-lg shadow-gray-200/40 dark:shadow-gray-800/60 flex flex-col justify-between px-4 lg:transition-[width] ease-linear
         ${sidebarToggled ? "" : "-translate-x-full lg:-translate-x-0"}
-        ${sidebarResized ? "lg:w-20" : ""}`}>
-
+        ${sidebarResized ? "lg:w-20" : ""}
+    `}>
         <div className="min-h-max py-4 border-b border-b-gray-200 dark:border-b-gray-800">
-
+          
           <span className={`ml-20 text-slate-100 
                     ${sidebarResized ? "lg:invisible" : ""}
                 `}>TelEgyCare</span>
@@ -114,9 +115,9 @@ function Sidebar({data}) {
                 <li key={navItem.id}>
                   <Link href={navItem.link} className={`
                                 flex items-center gap-x-4 px-3 py-2.5 rounded-md
-                                ${navItem.isActive ? "bg-white dark:bg-white text-[#0070CD] dark:text-[#0070CD]" : "text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-900"}
+                                ${navItem.isActive ? "bg-white text-[#0070CD] " : "text-[#fff]  hover:bg-[#ffff] hover:text-[#0070CD]"}
                             `}>
-                    <span className="min-w-max inline-flex">
+                    <span className="min-w-max inline-flex ">
                       {navItem.icon}
                     </span>
                     <span className={`
@@ -131,6 +132,10 @@ function Sidebar({data}) {
           </ul>
         </nav>
 
+
+
+
+
         <div className="min-h-max py-2 hidden lg:flex justify-end bg-transparent">
           <button onClick={() => { resizeSidebar() }} className={`
                 outline-none bg-gray-100 dark:bg-[#ffffff] rounded-md text-gray-800 dark:text-gray-200 border border-gray-200 dark:border-gray-800 ease-linear transition-transform  w-8 h-8 sm:w-9 sm:h-9 flex items-center justify-center
@@ -143,7 +148,9 @@ function Sidebar({data}) {
           </button>
         </div>
       </aside>
-      
+
+
+
       <main>
         <div className="flex lg:hidden fixed right-2 top-2 p-4">
           <button onClick={() => { toggleSidebar() }} className="p-3 rounded-full bg-blue-600 dark:bg-blue-500 outline-none w-12 aspect-square flex flex-col relative justify-center items-center">
