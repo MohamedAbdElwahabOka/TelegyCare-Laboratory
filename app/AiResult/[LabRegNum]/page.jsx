@@ -9,6 +9,7 @@ import { useSearchParams } from 'next/navigation';
 function Ai_result({params}) {
   const searchParams = useSearchParams();
   const labRegNumber = searchParams.get('labRegNum');
+  console.log(labRegNumber)
   return (
     <div>
      <div className="flex h-screen">  
