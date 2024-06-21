@@ -1,14 +1,14 @@
 'use client'
 import Image from 'next/image'
-import Aortic from '../img/Aortic.jpg'
-import Segmentation from '../img/Segmentation.jpg'
-import Link from 'next/link';
+// import Aortic from '../img/Aortic.jpg'
+// import Segmentation from '../img/Segmentation.jpg'
+// import Link from 'next/link';
 import { useSearchParams } from 'next/navigation';
 // import { createCanvas, loadImage } from 'canvas';
 // import { Jimp } from 'jimp';
-import { useRef, useEffect } from 'react';
-import FindWhitePixel from './FindWhitePixel';
+// import { useRef, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
+import html2canvas from 'html2canvas';
 
 export default function AorticSegmentation({PatientID}) {
 
@@ -21,6 +21,18 @@ export default function AorticSegmentation({PatientID}) {
   console.log(process.env.NEXT_PUBLIC_MODEL_HOST_UPLOAD + OriginalImgSrc)
   console.log(process.env.NEXT_PUBLIC_MODEL_HOST_OUTPUT + SegmentedImgSrc)
 
+  const captureImage = async () => {
+    const element = document.getElementById('overlayImages');
+    const canvas = await html2canvas(element);
+    const imgData = canvas.toDataURL('image/png');
+  
+    // Store imgData in local storage
+    localStorage.setItem('overlayImages', imgData);
+  };
+
+
+
+
   return (
     <div>
       <div className="p-8">
@@ -30,6 +42,8 @@ export default function AorticSegmentation({PatientID}) {
           <button 
           onClick={() =>{
             router.push(`/WriteReport/${PatientID}?labRegNum=${labRegNum}&SegmentedImgSrc=${SegmentedImgSrc}`);
+            captureImage();
+            // captureImage2
           }
             
           }
@@ -44,7 +58,7 @@ export default function AorticSegmentation({PatientID}) {
             <div className="text-xl font-semibold mb-2">Ultrasound Image of the Heart</div>
             <div className="flex justify-center">
               <div className="flex space-x-20">
-                <div>
+                <div id="aorticImage">
                   <Image
                     src={process.env.NEXT_PUBLIC_MODEL_HOST_UPLOAD + SegmentedImgSrc}
                     width={300}
@@ -65,7 +79,7 @@ export default function AorticSegmentation({PatientID}) {
                   />
                   <p className="text-center">Segmentation of the Ultrasound Image</p>
                 </div>
-                <div style={{ position: 'relative', width: 300, height: 300 }}>
+                <div id="overlayImages" style={{ position: 'relative', width: 300, height: 300 }}>
                   <Image
                     src={process.env.NEXT_PUBLIC_MODEL_HOST_UPLOAD + SegmentedImgSrc}
                     width={300}
@@ -84,7 +98,8 @@ export default function AorticSegmentation({PatientID}) {
                   />
                   <p className="text-center">Overlay of Aortic Ultrasound Image and Segmentation</p>
 
-</div>
+                </div>
+                {/* <button onClick={captureImage}>Capture Image</button> */}
               </div>
             </div>
        </div>

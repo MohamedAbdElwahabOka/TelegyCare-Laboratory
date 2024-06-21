@@ -16,6 +16,7 @@ const [patientDetails, setPatientDetails] = useState({});
 useEffect(() => {
   getPatientById_();
 }, [params.id_Patient]);
+
 const getPatientById_ = () => {
 Swal.fire({
       title: 'Loading...',

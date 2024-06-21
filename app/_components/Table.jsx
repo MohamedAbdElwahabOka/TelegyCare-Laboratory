@@ -63,34 +63,34 @@ function Table({ data ,labRegNum}) {
                 {item?.attributes?.pres_state == '1' ? <>
 
                 <td className=" px-4 py-2">
-                  <Link href={`/patient-details/${item?.attributes?.patient?.data?.id}?labRegNum=${labRegNum}`}>
+                  <Link href={`/patient-details/${item?.attributes?.patient?.data?.id}?labRegNum=${labRegNum}&P=PatientDetails`}>
                     #{item?.attributes?.patient?.data?.attributes?.reg_Num}
                   </Link>
                 </td>
                 <td className=" px-4 py-2">
-                  <Link href={`/patient-details/${item?.attributes?.patient?.data?.id}?labRegNum=${labRegNum}`}>
+                  <Link href={`/patient-details/${item?.attributes?.patient?.data?.id}?labRegNum=${labRegNum}&P=PatientDetails`}>
                     
                {item?.attributes?.patient?.data?.attributes?.Name}
                   </Link>
                 </td>
             
                 <td className=" px-4 py-2">
-                  <Link href={`/patient-details/${item?.attributes?.patient?.data?.id}?labRegNum=${labRegNum}`}>
+                  <Link href={`/patient-details/${item?.attributes?.patient?.data?.id}?labRegNum=${labRegNum}&P=PatientDetails`}>
                 {item?.attributes?.patient?.data?.attributes?.NationalId}
                   </Link>
                 </td>
                 <td className=" px-4 py-2">
-                  <Link href={`/patient-details/${item?.attributes?.patient?.data?.id}?labRegNum=${labRegNum}`}>
+                  <Link href={`/patient-details/${item?.attributes?.patient?.data?.id}?labRegNum=${labRegNum}&P=PatientDetails`}>
                 {item?.attributes?.patient?.data?.attributes?.phone}
                   </Link>
                 </td>
                 <td className=" px-4 py-2">
-                  <Link href={`/patient-details/${item?.attributes?.patient?.data?.id}?labRegNum=${labRegNum}`}>
+                  <Link href={`/patient-details/${item?.attributes?.patient?.data?.id}?labRegNum=${labRegNum}&P=PatientDetails`}>
                     {item?.attributes?.patient?.data?.attributes?.Email}
                   </Link>
                 </td>
                 <td className=" px-4 py-2">
-                  <Link href={`/patient-details/${item?.attributes?.patient?.data?.id}?labRegNum=${labRegNum}`}>
+                  <Link href={`/patient-details/${item?.attributes?.patient?.data?.id}?labRegNum=${labRegNum}&P=PatientDetails`}>
                      {item?.attributes?.patient?.data?.attributes?.Governorate},  
                      {item?.attributes?.patient?.data?.attributes?.City}, 
                      {item?.attributes?.patient?.data?.attributes?.Street}
