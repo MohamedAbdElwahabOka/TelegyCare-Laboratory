@@ -1,7 +1,7 @@
 'use client'
 import { useState } from 'react';
 import { useEffect} from 'react'
-
+import Swal from 'sweetalert2'
 import { useRouter } from 'next/navigation';
 // import PatientAPI from '../../_Utils/PatientAPI';
 
@@ -179,7 +179,7 @@ function FileUploader({PatientID,labRegNum,patientDetails}) {
     
       <div className="w-full max-w-md mx-auto mt-8 border border-gray-300 p-4 rounded-md shadow-md file-uploader">
       <div
-        className="w-full h-64 border-dashed border-2 border-gray-300 border-2 rounded-md flex flex-col justify-center items-center drop-zone"
+        className="w-full h-[160px] border-dashed border-2 border-gray-300 border-2 rounded-md flex flex-col justify-center items-center drop-zone"
         onDrop={handleDrop}
         onDragOver={(e) => e.preventDefault()}
       >
@@ -227,7 +227,13 @@ function FileUploader({PatientID,labRegNum,patientDetails}) {
           (e) => {
             e.preventDefault();
             handleSubmit(e)
-          }}
+            
+          }
+         
+            
+          
+
+        }
         className="bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600 w-full mt-4"
       >
         Send To AI

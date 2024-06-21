@@ -9,6 +9,9 @@ import { useSearchParams } from 'next/navigation';
 import generatePDF from '../_components/generatePDF';
 import Image from 'next/image';
 import { useState } from 'react';
+import { useEffect} from 'react'
+import PatientAPI from '../../_Utils/PatientAPI';
+import LaboratoriesAPI from '../../_Utils/LaboratoriesAPI'
 
 
 function Ai_result({params}) {
@@ -20,17 +23,126 @@ function Ai_result({params}) {
   const OriginalImgSrc = searchParams.get('OriginalImgSrc')
   const SegmentedImgSrc = searchParams.get('SegmentedImgSrc')
   console.log(labRegNum)
+  console.log(params.Patientid)
   console.log(process.env.NEXT_PUBLIC_BLOB + OriginalImgSrc)
   console.log(process.env.NEXT_PUBLIC_MODEL_HOST + SegmentedImgSrc)
+  function calculateAge(birthDateString) {
+    const birthDate = new Date(birthDateString);
+    const today = new Date();
+    let age = today.getFullYear() - birthDate.getFullYear();
+    const m = today.getMonth() - birthDate.getMonth();
 
-  const [formData, setFormData] = useState({
+    if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
+        age--;
+    }
+
+    return age;
+}
+
+  const now = new Date();
+  const options = { year: 'numeric', month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' };
+  const formattedDateTime = new Intl.DateTimeFormat('en-US', options).format(now);
+  console.log(formattedDateTime);
+
+  const [patientDetails, setPatientDetails] = useState({});
+  const [laboratoriesDetails, setLaboratoriesDetails] = useState({});
+
+  useEffect(() => {
+    getPatientById_();
+  }, [params.Patientid]);
+  const getPatientById_ = () => {
+  
+      PatientAPI.getPatientById(params.Patientid).then((res) => {
+        console.log("patient item ", res.data.data);
+        setPatientDetails(res.data.data);
+      });
+    };
+
+    useEffect(() => {
+      getLaboratoreyByRegNum_();
+    }, [labRegNum]);
+    const getLaboratoreyByRegNum_ = () => {
+    
+      LaboratoriesAPI.getLaboratoreyByRegNum(labRegNum).then((res) => {
+          console.log("Lab item ", res.data.data);
+          setLaboratoriesDetails(res.data.data);
+        });
+      };
+  
+    console.log(laboratoriesDetails);
+    console.log(patientDetails);
+
+
+    const patientName = patientDetails?.attributes?.Name;
+    const patientREg = patientDetails?.attributes?.reg_Num;
+    const patientAge = calculateAge(patientDetails?.attributes?.Birth_Date);
+    const patientGender = patientDetails?.attributes?.Gender;
+
+    const LabName = laboratoriesDetails[0]?.attributes?.Name
+    const LabCategory = laboratoriesDetails[0]?.attributes?.Category
+    const LabAdd = laboratoriesDetails[0]?.attributes?.Address
+    // const LabEmail = laboratoriesDetails[0]?.attributes?.Email
+    const LabPhone = laboratoriesDetails[0]?.attributes?.phone
+
+    console.log(patientName)
+    console.log(patientGender)
+    console.log(patientAge)
+
+    console.log(LabName)
+    // console.log(LabEmail)
+    console.log(LabCategory)
+    console.log(LabAdd)
+    console.log(LabPhone)
+
+  
+
+   const [formData, setFormData] = useState({
+    // LabCategory:LabCategory,
+    // LabName:LabName,
+    // LabAddress:LabAdd,
+
+    // PatientName:patientName,
+    // PatientAge:patientAge,
+    // PatientGender:patientGender,
+
+    // PatientId:patientREg,
+    // LabId:labRegNum,
+    ReferencBy: '',
+
+    // RegisteredOn:formattedDateTime,
+    // ReportedOn:formattedDateTime,
+    
+
+
     part: '',
     technique: '',
     findings: '',
-    age: '',
+
     img11:OriginalImgSrc,
-    img22:SegmentedImgSrc
+    img22:SegmentedImgSrc,
+
+    // GenerateOn:formattedDateTime,
+    // LabPPhone:LabPhone
+    
   });
+
+  formData.LabCategory = LabCategory;
+  formData.LabName = LabName;
+  formData.LabAddress = LabAdd;
+  formData.PatientName = patientName;
+  formData.PatientAge = patientAge;
+  formData.PatientGender = patientGender;
+  formData.PatientId = patientREg;
+  formData.LabId = labRegNum;
+  formData.RegisteredOn = formattedDateTime;
+  formData.ReportedOn = formattedDateTime;
+  // formData.img11 = OriginalImgSrc;
+  // formData.img22 = SegmentedImgSrc;
+  formData.GenerateOn = formattedDateTime;
+  formData.LabPPhone = LabPhone;
+
+
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prevData) => ({
@@ -85,14 +197,24 @@ function Ai_result({params}) {
       <div className="mb-4 flex items-center">
           <div className="flex items-center mr-24">
             <label className="block text-gray-700 text-sm font-bold mr-2">Name:</label>
-            <label className="block text-gray-700 text-sm font-bold ">h</label>
+            <label className="block text-gray-700 text-sm font-bold ">{patientName}</label>
           </div>
           <div className="flex items-center">
             <label className="block text-gray-700 text-sm font-bold mr-2">Age:</label>
-            <label className="block text-gray-700 text-sm font-bold">20</label>
+            <label className="block text-gray-700 text-sm font-bold">{patientAge}</label>
           </div>
         </div>
         <form className="space-y-4">
+        <div>
+            <label className="block text-gray-700 text-sm font-bold mb-2">Referenc By:</label>
+            <input
+              type="text"
+              name="ReferencBy"
+              value={formData.ReferencBy}
+              onChange={handleChange}
+              className="w-full px-3 py-2 border border-gray-300 rounded"
+            />
+          </div>
           <div>
             <label className="block text-gray-700 text-sm font-bold mb-2">Part:</label>
             <input
@@ -121,16 +243,7 @@ function Ai_result({params}) {
               className="w-full px-3 py-2 border border-gray-300 rounded"
             />
           </div>
-          <div>
-            <label className="block text-gray-700 text-sm font-bold mb-2">Age:</label>
-            <input
-              type="number"
-              name="age"
-              value={formData.age}
-              onChange={handleChange}
-              className="w-full px-3 py-2 border border-gray-300 rounded"
-            />
-          </div>
+          
         </form>
         <div className="flex justify-end mt-4">
           <button
