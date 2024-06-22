@@ -3,7 +3,8 @@ import Link from 'next/link';
 function Patient_Details({patient,medicalrec}) {
   console.log(medicalrec)
   console.log(patient);
-
+  const cloudinaryPdfUrl = "https://res.cloudinary.com/dlw9u7jf0/image/upload/v1718825281/medical_report_8_c51dbddd08.pdf"; 
+  const cloudinaryPngUrl = "https://res.cloudinary.com/dlw9u7jf0/image/upload/v1719054709/vscode_icons_file_type_pdf2_b29bc1d7a5.png";
 
   
   return (
@@ -99,10 +100,42 @@ function Patient_Details({patient,medicalrec}) {
 </span>
           
       </div>
-      
-      
+        
+    </fieldset>
     
-      
+    <fieldset  className="border border-gray-300 p-4 rounded-md">
+      <legend className="text-lg font-semibold mb-2">Doctor PDFs</legend>
+      <div className="flex items-center mb-4">
+        <div className="flex justify-center items-center bg-gray-900">
+        <div className="bg-gray-800 text-white p-4 rounded-lg shadow-md max-w-md">
+          {/* <div className="flex justify-center mb-4">
+            <iframe
+              src={cloudinaryPdfUrl}
+              className="w-full h-48"
+              style={{ border: 'none' }}
+            ></iframe>
+          </div> */}
+          <div className="flex justify-center items-center mb-2">
+            <img
+              src={cloudinaryPngUrl}
+              alt="PDF Icon"
+              className="w-12 h-12"
+            />
+          </div>
+          <div className="flex justify-center space-x-2 mb-4">
+            <button download="medical_report.pdf" className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+              🔗
+            </button>
+          </div>
+          <div className="text-center">
+            <a href={cloudinaryPdfUrl} download="medical_report.pdf" className="text-blue-400 hover:underline">
+              medical_report.pdf
+            </a>
+          </div>
+      </div>
+    </div>
+
+      </div>
     </fieldset>
 
 
