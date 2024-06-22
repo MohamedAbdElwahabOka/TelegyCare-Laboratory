@@ -3,14 +3,18 @@ import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 function Table({ data ,labRegNum}) {
+  // const cloudinaryPdfUrl = "https://res.cloudinary.com/dlw9u7jf0/image/upload/v1718825281/medical_report_8_c51dbddd08.pdf"; 
+  const cloudinaryPngUrl = "https://res.cloudinary.com/dlw9u7jf0/image/upload/v1719054709/vscode_icons_file_type_pdf2_b29bc1d7a5.png";
+const fileUrl= data?.[0]?.attributes?.doctor_Files?.data[0]?.attributes?.url ;
   const [searchPatients, setSearchPatients] = useState('');
   const router  = useRouter();
 
 
-
+console.log(data?.[0]?.attributes?.doctor_Files?.data[0]?.attributes?.url)
  
 
   const filteredPatients = data.filter(Patient => {
+    
     const name = Patient?.attributes?.patient?.data?.attributes?.Name ?? "";
     const regNum = Patient?.attributes?.patient?.data?.attributes?.reg_Num ?? "";
     const phone = Patient?.attributes?.patient?.data?.attributes?.phone ?? "";
@@ -52,6 +56,7 @@ function Table({ data ,labRegNum}) {
               <th className="px-4 py-2">Phone</th>
               <th className="px-4 py-2">Email</th>
               <th className="px-4 py-2">Address</th>
+              <th className="px-4 py-2">Doctor PDFs</th>
          
             </tr>
           </thead>
@@ -96,6 +101,36 @@ function Table({ data ,labRegNum}) {
                      {item?.attributes?.patient?.data?.attributes?.Street}
                       
                   </Link>
+          
+                </td>
+                <td className=" px-4 py-2">
+                  {/* <Link href={data?.[0]?.attributes?.doctor_Files?.data[0]?.attributes?.url} target="_blank" download="medical_report.pdf" className="text-blue-400 hover:underline">
+          
+                    <div className="flex justify-center items-center h-full w-full">
+                        <img
+                              src={cloudinaryPngUrl}
+                              alt="PDF Icon"
+                              className="w-10 h-10"
+                            />
+                    </div>
+                
+                      
+                  </Link> */}
+                     {fileUrl? (
+        <Link href={fileUrl} target="_blank" download="medical_report.pdf" className="text-blue-400 hover:underline">
+          <div className="flex justify-center items-center h-full w-full">
+            <img
+              src={cloudinaryPngUrl}
+              alt="PDF Icon"
+              className="w-10 h-10"
+            />
+          </div>
+        </Link>
+      ) : (
+        <div className="text-center text-red-500">
+          No PDF available
+        </div>
+      )}
           
                 </td>
               

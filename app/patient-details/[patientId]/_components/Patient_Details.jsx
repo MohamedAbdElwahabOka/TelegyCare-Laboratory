@@ -3,7 +3,7 @@ import Link from 'next/link';
 function Patient_Details({patient,medicalrec}) {
   console.log(medicalrec)
   console.log(patient);
-  const cloudinaryPdfUrl = "https://res.cloudinary.com/dlw9u7jf0/image/upload/v1718825281/medical_report_8_c51dbddd08.pdf"; 
+  // const cloudinaryPdfUrl = "https://res.cloudinary.com/dlw9u7jf0/image/upload/v1718825281/medical_report_8_c51dbddd08.pdf"; 
   const cloudinaryPngUrl = "https://res.cloudinary.com/dlw9u7jf0/image/upload/v1719054709/vscode_icons_file_type_pdf2_b29bc1d7a5.png";
 
   
@@ -128,7 +128,7 @@ function Patient_Details({patient,medicalrec}) {
             </button>
           </div>
           <div className="text-center">
-            <a href={cloudinaryPdfUrl} download="medical_report.pdf" className="text-blue-400 hover:underline">
+            <a href={medicalrec?.[0]?.attributes?.doctor_Files?.data[0]?.attributes?.url} target="_blank" download="medical_report.pdf" className="text-blue-400 hover:underline">
               medical_report.pdf
             </a>
           </div>
