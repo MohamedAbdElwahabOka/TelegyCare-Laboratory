@@ -2,7 +2,7 @@
 import React from 'react'
 import { useState } from 'react';
 import { useEffect} from 'react'
-import SendResults from '../../_components/Send_Results'
+import SendResults from '../_components/Send_Results'
 import medicalrecordAPI from '../../_Utils/medicalrecordAPI';
 import Sidebar_for_PatientD from '../../patient-details/[patientId]/_components/Sidebar_for_PatientD'
 import { useSearchParams } from 'next/navigation';
@@ -40,7 +40,8 @@ function SendResult({params}) {
       Swal.close();
     });
   };
-  console.log(medicalRecordsByPatientId[0]?.attributes.doctor.data.attributes)
+  // console.log(medicalRecordsByPatientId[0]?.attributes.doctor.data.attributes)
+  console.log(medicalRecordsByPatientId[0]?.attributes)
 
 
   return (
@@ -55,7 +56,7 @@ function SendResult({params}) {
       :(
       
     
-        <SendResults medicalRecords={medicalRecordsByPatientId}/>  )}
+        <SendResults medicalRecords={medicalRecordsByPatientId} patientid={params.id_Patient}/>  )}
       </div>
     </div>
     </div>

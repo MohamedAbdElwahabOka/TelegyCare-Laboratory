@@ -122,11 +122,11 @@ function Patient_Details({patient,medicalrec}) {
               className="w-12 h-12"
             />
           </div>
-          <div className="flex justify-center space-x-2 mb-4">
+          {/* <div className="flex justify-center space-x-2 mb-4">
             <button download="medical_report.pdf" className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
               🔗
-            </button>
-          </div>
+            </button> 
+          </div> */}
           <div className="text-center">
             <a href={cloudinaryPdfUrl} download="medical_report.pdf" className="text-blue-400 hover:underline">
               medical_report.pdf
