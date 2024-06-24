@@ -25,6 +25,7 @@ function SendResults({ medicalRecords, patientid }) {
     const data = {
       data: {
         Lab_note: LabNote,
+        pres_state: '2',
         // Lab_Files:{
         //   id: uploadedFileID
         // }
