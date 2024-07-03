@@ -128,8 +128,8 @@ function Patient_Details({patient,medicalrec}) {
             </button> 
           </div> */}
           <div className="text-center">
-            <a href={medicalrec?.[0]?.attributes?.doctor_Files?.data[0]?.attributes?.url} target="_blank" download="medical_report.pdf" className="text-blue-400 hover:underline">
-              medical_report.pdf
+            <a href={medicalrec?.[0]?.attributes?.doctor_Files?.data?.[0]?.attributes?.url} target="_blank" download="medical_report.pdf" className="text-blue-400 hover:underline">
+              {medicalrec?.[0]?.attributes?.doctor_Files?.data?.[0]?.attributes?.name}
             </a>
           </div>
       </div>
