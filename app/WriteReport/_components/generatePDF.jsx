@@ -193,11 +193,11 @@ doc.text('(MD, Radiologist)', 150, 260);
 doc.line(14, 270, 196, 270); // Line above footer
 doc.setFontSize(10);
 doc.text(`Generated on: ${GenerateOn} `, 14, 275);
-doc.text(`Contact: drlogyimaging@drlogy.com | WhatsApp: + ${LabPPhone}`, 14, 280);
+doc.text(`Contact: WhatsApp: + ${LabPPhone}`, 14, 280);
 doc.text('Page 1 of 1', 180, 285);
 
 // Save PDF
-doc.save('medical_report.pdf');
+doc.save(`medical_report_For${PatientName}_whitId${PatientId}.pdf`);
 
 };
 export default generatePDF;

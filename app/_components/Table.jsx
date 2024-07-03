@@ -116,8 +116,8 @@ console.log(data?.[0]?.attributes?.doctor_Files?.data[0]?.attributes?.url)
                 
                       
                   </Link> */}
-                     {fileUrl? (
-        <Link href={fileUrl} target="_blank" download="medical_report.pdf" className="text-blue-400 hover:underline">
+                     {item?.attributes?.doctor_Files?.data?.[0]?.attributes?.url? (
+        <Link href={item?.attributes?.doctor_Files?.data?.[0]?.attributes?.url} target="_blank" download="medical_report.pdf" className="text-blue-400 hover:underline">
           <div className="flex justify-center items-center h-full w-full">
             <img
               src={cloudinaryPngUrl}
